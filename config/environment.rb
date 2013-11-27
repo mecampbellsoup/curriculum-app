@@ -8,7 +8,7 @@ def get_reqs(current_dir)
     next if file.start_with?('.') || file.start_with?('environment.rb') || file.end_with?('spec.rb') # add additional filters here for files you don't want included
     if File.directory?(current_dir + '/' + file)
       next if file.start_with?('templates')
-      get_reqs(current_dir+ '/' + file)
+      get_reqs(current_dir + '/' + file)
     else
       require_relative (current_dir + '/' + file) if file.end_with?('.rb')
     end

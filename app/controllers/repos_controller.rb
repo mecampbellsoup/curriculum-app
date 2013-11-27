@@ -1,12 +1,19 @@
 class ReposController < ApplicationController
 
-  get '/.json' do
-    content_type :json
-    Lab.read_files.first.to_json
+  get '/' do
+    @labs = Lab.read_file_system
+    erb :labs
   end
 
-  get '/labs' do
-    "Hello again, world!"
+  get '/:tag' do
+    # list all the yaml tags
+    # e.g. languages: ruby, javascript
+    # make tags clickable
+  end
+
+  get '/:tag/:tag_id' do
+    @labs = Lab.by_tag_with_id(params[:tag], params[:tag_id])
+    erb :labs
   end
 
 end
