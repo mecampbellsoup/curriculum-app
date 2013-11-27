@@ -1,0 +1,20 @@
+<html>
+  <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <title></title>
+      <link rel="stylesheet" href="">
+  </head>
+  <body>
+    <% if !@labs.empty? %>
+    <!-- @labs is an array of hashes -->
+      <ul>
+        <% @labs.each do |lab| %>
+          <li><%= lab %></li>
+        <% end %>
+      </ul>
+    <% else %>
+        Sorry, no labs to display.
+    <% end %>
+  </body>
+</html>
