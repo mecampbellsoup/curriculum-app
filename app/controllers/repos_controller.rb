@@ -1,14 +1,21 @@
 class ReposController < ApplicationController
 
   get '/' do
-    @labs = Lab.read_file_system
-    erb :labs
-  end
-
-  get '/:tag' do
+    # e.g. /
     # list all the yaml tags
     # e.g. languages: ruby, javascript
     # make tags clickable
+    # need a method that basically goes through each readme, pushes the yaml hash keys into an array, and returns us that array
+    @tags = Lab.get_tags
+    erb :tags
+  end
+
+  get '/:tag' do
+    # e.g. /languages
+    # should show clickable list like this: ruby, javascript, sql, etc. 
+    @tag = params[:tag]
+    @tag_names = Lab.tag_names_from_id(params[:tag])
+    erb :tag_names
   end
 
   get '/:tag/:tag_id' do

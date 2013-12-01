@@ -4,4 +4,5 @@
   difficulty: medium
   day: 45
   color: green
+  week_day: monday
 ---

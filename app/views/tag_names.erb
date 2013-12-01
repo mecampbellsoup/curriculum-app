@@ -1,0 +1,20 @@
+<html>
+  <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <title></title>
+      <link rel="stylesheet" href="">
+  </head>
+  <body>
+    <% if !@tag_names.empty? %>
+    <!-- @tag_names is an array of arrays -->
+      <ul>
+        <% @tag_names.each do |name| %>
+          <li><a href="/<%= @tag %>/<%= name %>"><%= name %></a></li>
+        <% end %>
+      </ul>
+    <% else %>
+        Sorry, no tag names to display.
+    <% end %>
+  </body>
+</html>

@@ -4,4 +4,5 @@
   difficulty: high
   day: 35
   color: blue
+  date: today
 ---
