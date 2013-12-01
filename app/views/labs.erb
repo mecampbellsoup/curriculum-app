@@ -6,11 +6,11 @@
       <link rel="stylesheet" href="">
   </head>
   <body>
-    <% if !@labs.empty? %>
-    <!-- @labs is an array of hashes -->
+    <% if !@matching_labs.empty? %>
+    <!-- @matching_labs is an array of hashes -->
       <ul>
-        <% @labs.each do |lab| %>
-          <li><%= lab.name %></li>
+        <% @matching_labs.each do |lab| %>
+          <li><%= lab.name["name"] %></li>
         <% end %>
       </ul>
     <% else %>

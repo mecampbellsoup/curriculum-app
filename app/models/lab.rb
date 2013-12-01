@@ -1,4 +1,7 @@
 class Lab
+  extend Searchable
+  # now at Lab level we have access to our info search methods
+  
   attr_accessor :name, :tags, :github_url
 
   @@all = []
