@@ -1,5 +1,5 @@
 class ReposController < ApplicationController
-
+  
   before do
     @labs = Lab.all
   end

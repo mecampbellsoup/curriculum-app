@@ -20,8 +20,10 @@ def mount_controllers_as_middleware
 end
 mount_controllers_as_middleware
 
-# On rackup, iterate through file system
+# Use Rack's logger
+use Rack::CommonLogger
 
+# On rackup, iterate through file system
 lp = LabParser.new('/curriculum')
 Curriculum = lp.call
 
