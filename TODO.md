@@ -2,7 +2,6 @@
 
 ##summary
 - easy web app interface that makes finding labs at any point in the semester a breeze!
-  - organize by the 
 - version controlled curriculum.
 - way to deploy previous labs for new semesters
 - don't lose changes or work on labs due to multiple copies floating around
