@@ -7,3 +7,4 @@ gem 'pry'
 gem 'activesupport', :require => "active_support"
 gem 'rake'
 gem 'thin'
+gem 'sinatra-twitter-bootstrap', :require => 'sinatra/twitter-bootstrap'
