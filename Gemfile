@@ -5,3 +5,4 @@ gem 'sinatra-contrib'
 gem 'rspec'
 gem 'pry'
 gem 'activesupport', :require => "active_support"
+gem 'rake'
