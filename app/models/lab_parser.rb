@@ -19,12 +19,12 @@ class LabParser
   end
 
   def parse_lab_dir(lab_dir)
-    tags, name = parse_readme(lab_dir)
-    Lab.new(name, tags)
+    Lab.new(parse_readme(lab_dir))
   end
 
   def parse_readme(lab_dir)
     readme = File.open(lab_dir + "/README.md")
-    [YAML.load(readme), "name" => File.basename(lab_dir)]
+    url_file = File.open(lab_dir + "/url.txt")
+    [YAML.load(readme), "name" => File.basename(lab_dir), :github_url => url_file.read ]
   end
 end

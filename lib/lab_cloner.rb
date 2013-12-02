@@ -18,8 +18,14 @@ class LabCloner
     self.urls.each do |url|
       Dir.chdir(File.join(RootFolder, '/curriculum'))
       name = url.match(/\/([a-zA-Z-]*)(?=-ruby\b-\d{3})/)[1]
-      system("git clone #{url} #{name}")
-      system("rm -rf #{name}/.git")
+      if !Dir.glob(File.basename(File.join(Dir.pwd,"*"))).include?(name)
+        system("git clone #{url} #{name}")
+        system("rm -rf #{name}/.git")
+        system("touch #{name}/url.txt")
+        system("echo #{url} > #{name}/url.txt")
+      else
+        system("echo #{name} already exists as a lab in this directory")
+      end
     end
   end
 

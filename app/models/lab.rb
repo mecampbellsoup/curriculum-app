@@ -6,8 +6,8 @@ class Lab
 
   @@all = []
 
-  def initialize(name, tags)
-    @name, @tags = name, tags
+  def initialize(*args)
+    @name, @tags = name, tags, 
     @@all << self
   end
 

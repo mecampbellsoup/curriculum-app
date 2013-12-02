@@ -16,8 +16,8 @@ NEXT:
 
 - deploy-a-lab functionality
 - deployed lab can have a "deployed in semeseter" tag
-- breadcrumbs for lab navigation
 - page right (index) => most recent commits
 - page right (lab)   => README in GitHub flavored markdown
+- 
 - link to the lab repo on github
 - what to do with the search bar?
