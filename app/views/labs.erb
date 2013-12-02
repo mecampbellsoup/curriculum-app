@@ -5,15 +5,22 @@
       <li><a href="/<%= @tag %>"><%= @tag.capitalize %></a></li>
       <li><a href="/<%= @tag_id %>"><%= @tag_id %></a></li>
     </ol>
-    <a class="list-group-item active">
-      Labs
-    </a>
+ 
+  <ul class="list-group col-md-4">
     <% @matching_labs.each do |lab| %>
-      <a href="/<%= lab.name %>/readme" class="list-group-item"><%= lab.name %></a>
-    <% end %>
+  
+      <li class="list-group-item">
+        <a href="<%= lab.github_url.gsub("git@github.com:", "https://github.com/") %>"><%= lab.name %></a> 
+        <a class="badge" href="/<%= lab.name %>/readme">README</a>
+      </li>
+  <% end %>
+     </ul>
 <% else %>
     Sorry, no labs to display.
 <% end %>
 
 <!-- Keep this around for later... -->
 <%#= lab.github_url.gsub("git@github.com:", "https://github.com/") %>
+
+
+      
