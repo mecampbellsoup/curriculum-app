@@ -1,0 +1,13 @@
+<% if !@tags.empty? %>
+<!-- @tags is an array of arrays -->
+<!--   <div class="list-group col-md-6"> -->
+    <a class="list-group-item active">
+      Flag
+    </a>
+    <% @tags.each do |tag| %>
+      <a href="/<%= tag %>" class="list-group-item"><%= tag %></a>
+    <% end %>
+<!--   </div> -->
+<% else %>
+    Sorry, no tags to display.
+<% end %>
