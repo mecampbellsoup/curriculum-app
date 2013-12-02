@@ -1,5 +1,10 @@
 <% if !@matching_labs.empty? %>
 <!-- @matching_labs is an array of hashes -->
+    <ol class="breadcrumb">
+      <li><a href="/">Filters</a></li>
+      <li><a href="/<%= @tag %>"><%= @tag.capitalize %></a></li>
+      <li><a href="/<%= @tag_id %>"><%= @tag_id %></a></li>
+    </ol>
     <a class="list-group-item active">
       Labs
     </a>
