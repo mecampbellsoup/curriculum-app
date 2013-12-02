@@ -46,8 +46,11 @@ html {
 }
 
 body {
-  margin: 0;
-/*  background: url('http://bobcb521.files.wordpress.com/2010/12/flatiron.jpg');*/
+  margin: 5px;
+}
+
+.background { 
+  background-image: url("./../images/flatiron.jpg");
 }
 
 a {
