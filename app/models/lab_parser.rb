@@ -24,7 +24,8 @@ class LabParser
 
   def parse_readme(lab_dir)
     readme = File.open(lab_dir + "/README.md")
+    yaml_readme = File.open(lab_dir + "/README.md")
     url_file = File.open(lab_dir + "/url.txt")
-    { :tags => YAML.load(readme), :name => File.basename(lab_dir), :github_url => url_file.read }
+    { :readme => readme.read, :tags => YAML.load(yaml_readme), :name => File.basename(lab_dir), :github_url => url_file.read }
   end
 end

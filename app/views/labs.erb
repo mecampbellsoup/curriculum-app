@@ -9,8 +9,11 @@
       Labs
     </a>
     <% @matching_labs.each do |lab| %>
-      <a href=<%= lab.github_url.gsub("git@github.com:", "https://github.com/") %> class="list-group-item"><%= lab.name %></a>
+      <a href="/<%= lab.name %>/readme" class="list-group-item"><%= lab.name %></a>
     <% end %>
 <% else %>
     Sorry, no labs to display.
 <% end %>
+
+<!-- Keep this around for later... -->
+<%#= lab.github_url.gsub("git@github.com:", "https://github.com/") %>

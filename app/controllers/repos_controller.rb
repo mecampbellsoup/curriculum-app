@@ -18,6 +18,12 @@ class ReposController < ApplicationController
     erb :tag_names
   end
 
+  get '/:lab/readme' do
+    @lab = Lab.find_by_name(params[:lab])
+    @lab.readme = RDiscount.new(@lab.readme).to_html
+    erb :readme
+  end
+
   get '/:tag/:tag_id' do
     @tag, @tag_id = params[:tag], params[:tag_id]
     @matching_labs = Lab.matching_tag_id(@labs, @tag, @tag_id)
