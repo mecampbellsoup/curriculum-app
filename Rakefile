@@ -14,15 +14,17 @@ task :console => [:environment] do
 end
 
 # IMPORTANT - READ THIS TASK!
-# This method populates the curriculum directory. 
+# This method populates the curriculum directory with labs. 
 desc 'Clone lab repositories (plus some other magic)'
 task :clone_repos => [:environment] do
   # Pretty sure we have already required the needed file on line 8 above
-  # require './lib/student_scraper'
+  # require './lib/lab_cloner'
 
   # Let's instantiate and call. Make sure to read through the Cloner class.
-  cloner = Cloner.new(
-      'git@github.com:flatiron-school/flatiron-kitchen-ruby-003.git'
+  cloner = LabCloner.new(
+      'git@github.com:flatiron-school/flatiron-kitchen-ruby-003.git',
+      'git@github.com:flatiron-school/amoeba-circus-on-rails-ruby-003.git',
+      'git@github.com:flatiron-school/pollywog-ranch-associations-ruby-003.git'
   )
   cloner.call
 end

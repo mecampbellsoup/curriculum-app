@@ -5,7 +5,7 @@
 # puts cloned repos into our app's /curriculum dir
 # need to be sure to remove the .git version control after cloning
 
-class Cloner
+class LabCloner
   attr_reader :urls
 
   def initialize(*urls)
@@ -17,7 +17,7 @@ class Cloner
     # looping through urls + git cloning magic here
     self.urls.each do |url|
       Dir.chdir(File.join(RootFolder, '/curriculum'))
-      name = url.match(/\/(\w*-\w*)-\b/)[1]
+      name = url.match(/\/([a-zA-Z-]*)(?=-ruby\b-\d{3})/)[1]
       system("git clone #{url} #{name}")
       system("rm -rf #{name}/.git")
     end

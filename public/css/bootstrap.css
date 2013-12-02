@@ -53,8 +53,7 @@ body {
   background-image: url("./../images/flatiron.jpg");
   background-size: 100%;
   background-repeat: no-repeat;
-/*  position: absolute;
-  margin-top: 50px*/
+  background-position: 50% 20%; 
 }
 
 a {

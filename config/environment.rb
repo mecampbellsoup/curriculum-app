@@ -16,6 +16,6 @@ def get_reqs(current_dir)
 end
 
 Dir.foreach(RootFolder) do |file|
-  next if file.start_with?('.')
+  next if file.start_with?('.') || file.start_with?('curriculum')
   get_reqs(RootFolder + '/' + file) if File.directory?(RootFolder + '/' + file)
 end
