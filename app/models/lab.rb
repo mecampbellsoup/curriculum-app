@@ -6,8 +6,10 @@ class Lab
 
   @@all = []
 
-  def initialize(*args)
-    @name, @tags = name, tags, 
+  def initialize(args)
+    @name = args[:name]
+    @tags = args[:tags]
+    @github_url = args[:github_url] 
     @@all << self
   end
 
