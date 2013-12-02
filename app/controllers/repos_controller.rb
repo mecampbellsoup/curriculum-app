@@ -2,10 +2,11 @@ class ReposController < ApplicationController
   
   before do
     @labs = Lab.all
+    @tags = Lab.get_tags(@labs)
   end
 
   get '/' do
-    @tags = Lab.get_tags(@labs)
+    # @tags = Lab.get_tags(@labs)
     erb :tags
   end
 

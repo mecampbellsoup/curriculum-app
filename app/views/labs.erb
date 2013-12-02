@@ -1,10 +1,13 @@
 <% if !@matching_labs.empty? %>
 <!-- @matching_labs is an array of hashes -->
-  <ul class="nav nav-pills nav-stacked">
+  <div class="list-group">
+    <a class="list-group-item active">
+      Labs
+    </a>
     <% @matching_labs.each do |lab| %>
-      <li><%= lab.name["name"] %></li>
+      <a class="list-group-item"><%= lab.name["name"] %></a>
     <% end %>
-  </ul>
+  </div>
 <% else %>
     Sorry, no labs to display.
 <% end %>
