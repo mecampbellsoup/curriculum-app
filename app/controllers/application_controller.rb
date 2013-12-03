@@ -1,8 +1,7 @@
 class ApplicationController < Sinatra::Base
 
-  helpers do
-    
-  end
+  # Later, when repos are private, we may need to authenticate
+  enable :sessions
 
   register Sinatra::Partial
   set :partial_template_engine, :erb
@@ -18,6 +17,10 @@ class ApplicationController < Sinatra::Base
       also_reload path
     end
     also_reload File.join(root, "/app/concerns/searchable.rb")
+  end
+
+  helpers do
+    include ::Helpers
   end
 
 end

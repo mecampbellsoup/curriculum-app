@@ -35,3 +35,5 @@ acts and amoebas will have models, controllers, and views, whereas talent only n
  - edit an individual act
  - bonus view: a single dashboard view that shows all acts, all amoebas, and a form to move amoebas
 10. When completed copy and paste link to your github repos master branch to this post on Piazza.
+
+UDATE

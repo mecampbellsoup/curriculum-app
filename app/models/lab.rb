@@ -2,7 +2,7 @@ class Lab
   extend Searchable
   # now at Lab level we have access to our info search methods
   
-  attr_accessor :name, :tags, :github_url, :readme
+  attr_accessor :name, :tags, :github_url, :readme, :commit_history
 
   @@all = []
 
@@ -11,6 +11,7 @@ class Lab
     @tags = args[:tags]
     @github_url = args[:github_url]
     @readme = args[:readme] 
+    @commit_history = args[:commit_history]
     @@all << self
   end
 

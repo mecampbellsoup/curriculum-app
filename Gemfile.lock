@@ -12,11 +12,35 @@ GEM
     coderay (1.1.0)
     daemons (1.1.9)
     diff-lcs (1.2.5)
+    dotenv (0.9.0)
     eventmachine (1.0.3)
+    faraday (0.8.8)
+      multipart-post (~> 1.2.0)
+    hashie (2.0.5)
+    httpauth (0.2.0)
     i18n (0.6.5)
+    json (1.8.1)
+    jwt (0.1.8)
+      multi_json (>= 1.5)
     method_source (0.8.2)
     minitest (4.7.5)
     multi_json (1.8.2)
+    multipart-post (1.2.0)
+    oauth2 (0.8.1)
+      faraday (~> 0.8)
+      httpauth (~> 0.1)
+      jwt (~> 0.1.4)
+      multi_json (~> 1.0)
+      rack (~> 1.2)
+    omniauth (1.1.4)
+      hashie (>= 1.2, < 3)
+      rack
+    omniauth-github (1.1.1)
+      omniauth (~> 1.0)
+      omniauth-oauth2 (~> 1.1)
+    omniauth-oauth2 (1.1.1)
+      oauth2 (~> 0.8.0)
+      omniauth (~> 1.0)
     pry (0.9.12.4)
       coderay (~> 1.0)
       method_source (~> 0.8)
@@ -64,6 +88,9 @@ PLATFORMS
 
 DEPENDENCIES
   activesupport
+  dotenv
+  json
+  omniauth-github
   pry
   rake
   rdiscount
