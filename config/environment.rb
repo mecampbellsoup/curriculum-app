@@ -1,6 +1,8 @@
 require 'yaml'
 require 'json'
 
+Dotenv.load
+
 RootFolder = File.expand_path(File.dirname(__FILE__)).gsub('/config', '')
 
 def get_reqs(current_dir)
