@@ -1,5 +1,6 @@
 require 'yaml'
 require 'json'
+require 'open-uri'
 
 Dotenv.load
 
@@ -16,6 +17,9 @@ def get_reqs(current_dir)
     end
   end
 end
+
+# Explicitly require view helpers first here so they can be mixed-in with my controllers
+require_relative '../app/helpers/date_helper'
 
 Dir.foreach(RootFolder) do |file|
   next if file.start_with?('.') || file.start_with?('curriculum')

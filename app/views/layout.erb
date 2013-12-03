@@ -4,7 +4,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Flatiron Curriculizer</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <!-- Bootstrap -->
     <link href="/css/bootstrap.css" rel="stylesheet">
   </head>
@@ -13,6 +12,17 @@
     <%#= partial :test, :locals => {test: "TESTING, 1-2-3!"} %>
     
     <%= yield %>
+
+    <ul class="list-group col-md-4 pull-right">
+      <% @labs.first.commit_history.each do |commit| %>
+      <!-- Putting most recent GitHub activity for labs here -->
+        <div class="list-group-item">
+          <span><%= commit.message %></span>
+          <span class="badge"><%= commit.name %></span> 
+          <span><img src='<%= commit.avatar %>' height='32'></span>
+        </div>
+      <% end %>
+    </ul>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://code.jquery.com/jquery.js"></script>

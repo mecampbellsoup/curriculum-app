@@ -1,14 +1,20 @@
 class GitHubApi
-  github_connection = Github.new :client_id => ENV['GITHUB_CLIENT_ID'], :client_secret => ENV['GITHUB_CLIENT_SECRET']
-  branches_info = {}
-  all_branches = git_connection.repos.list_branches 'mecampbellsoup', 'curriculum-app'
 
-  all_branches.body.each do |branch|
-    branches_info["#{branch.name}".to_s] = "#{branch.commit.url}"
+  def self.get_commits(user = 'flatiron-school', branch = 'master', repo)
+    uri = open("https://api.github.com/repos/#{user}/#{repo}/commits?sha=#{branch}&access_token=#{ENV['GITHUB_OAUTH_TOKEN']}")
+    commits_array = JSON.load(uri)
+    commits_array.map do |commit_hash|
+      Commit.new(
+        {
+          :name    => commit_hash["commit"]["author"]["name"],
+          :email   => commit_hash["commit"]["author"]["email"],
+          :date    => Time.parse(commit_hash["commit"]["author"]["date"]), 
+          :message => commit_hash["commit"]["message"],        
+          :avatar  => commit_hash["author"]["avatar_url"],     
+          :html    => commit_hash["html_url"]                  
+        }
+      )
+    end
   end
 
-  branches_info.keys.each do |branch|
-    commits_list.push (git_connection.repos.commits.list 'mecampbellsoup','curriculum-app', Chronic.parse("1 week ago"), Today, :sha => "master")
-  end
-  binding.pry
 end

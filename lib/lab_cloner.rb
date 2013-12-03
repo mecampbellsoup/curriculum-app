@@ -22,6 +22,7 @@ class LabCloner
         system("git clone #{url} #{name}")
         system("rm -rf #{name}/.git")
         system("touch #{name}/url.txt")
+        system("touch #{name}/repo_details.txt")
         system("echo #{url} > #{name}/url.txt")
       else
         system("echo #{name} already exists as a lab in this directory")
