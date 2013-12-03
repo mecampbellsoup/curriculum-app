@@ -1,24 +1,21 @@
-<% if !@matching_labs.empty? %>
-<!-- @matching_labs is an array of hashes -->
-    <ol class="breadcrumb">
-      <li><a href="/">Filters</a></li>
-      <li><a href="/<%= @tag %>"><%= @tag.capitalize %></a></li>
-      <li><a href="/<%= @tag_id %>"><%= @tag_id %></a></li>
-    </ol>
- 
-  <ul class="list-group col-md-4">
-    <% @matching_labs.each do |lab| %>
-  
-      <li class="list-group-item">
+<%= partial :breadcrumbs, :locals => {filter: @tag, filter_id: @tag_id} %>
+
+<div style="clear:both;">
+  <% if !@matching_labs.empty? %>
+  <!-- @matching_labs is an array of hashes -->
+   
+    <ul class="list-group col-md-4">
+      <% @matching_labs.each do |lab| %>
+        <li class="list-group-item">
         <a href="<%= lab.github_url.gsub("git@github.com:", "https://github.com/") %>"><%= lab.name %></a> 
         <a class="badge" href="/<%= lab.name %>/readme">README</a>
-      </li>
-  <% end %>
-     </ul>
-<% else %>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
     Sorry, no labs to display.
-<% end %>
-
+  <% end %>
+</div>
 <!-- Keep this around for later... -->
 <%#= lab.github_url.gsub("git@github.com:", "https://github.com/") %>
 

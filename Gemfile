@@ -8,3 +8,4 @@ gem 'activesupport', :require => "active_support"
 gem 'rake'
 gem 'thin'
 gem 'rdiscount'
+gem 'sinatra-partial'

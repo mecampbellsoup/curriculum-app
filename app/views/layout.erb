@@ -9,10 +9,11 @@
     <link href="/css/bootstrap.css" rel="stylesheet">
   </head>
   <body class='background'>
-    <%= erb :navbar %>
-      <%= yield %>
+    <%= partial :navbar %>
+    <%#= partial :test, :locals => {test: "TESTING, 1-2-3!"} %>
+    
+    <%= yield %>
 
-    </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://code.jquery.com/jquery.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->

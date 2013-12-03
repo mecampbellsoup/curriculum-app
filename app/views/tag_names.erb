@@ -1,21 +1,19 @@
-<% if !@tag_names.empty? %>
-<!-- @tag_names is an array of arrays -->
- <!--    <div class="list-group col-md-6"> -->
-    <ol class="breadcrumb">
-      <li><a href="/">Filters</a></li>
-      <li><a href="/<%= @tag %>"><%= @tag.capitalize %></a></li>
-    </ol>
+<%= partial :breadcrumbs, :locals => {filter: @tag, filter_id: nil} %>
+
+<div style="clear:both;">
+  <% if !@tag_names.empty? %>
+  <!-- @tag_names is an array of arrays -->
     <div class="list-group col-md-4">
       <a class="list-group-item active">
         <%= @tag.capitalize %>
       </a>
+
       <% @tag_names.each do |name| %>
         <a href="/<%= @tag %>/<%= name %>" class="list-group-item"><%= name %></a>
       <% end %>
     </div>
-<!--   </div> -->
-<% else %>
-  Sorry, no tag names to display.
-<% end %>
-
+  <% else %>
+    Sorry, no tag names to display.
+  <% end %>
+</div>
 

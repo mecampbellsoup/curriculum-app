@@ -1,5 +1,5 @@
 ---
-language: ruby
+languages: ruby
 tags: rails, active record associations, scaffolding, beginner
 ---
 
