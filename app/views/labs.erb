@@ -5,13 +5,22 @@
   <!-- @matching_labs is an array of hashes -->
    
     <ul class="list-group col-md-4">
-      <% @matching_labs.each do |lab| %>
+      <% @matching_labs.each_with_index do |lab, n| %>
         <li class="list-group-item">
         <a href="<%= lab.github_url.gsub("git@github.com:", "https://github.com/") %>"><%= lab.name %></a> 
-        <a class="badge" href="/<%= lab.name %>/readme">README</a>
+        <button class="badge show_readme" data-id="<%= n %>">README</button>
         </li>
       <% end %>
     </ul>
+
+    <div class="panel panel-default">
+      <% @matching_labs.each_with_index do |lab, n| %>
+        <div id="p<%= n %>" class="col-md-4 readme panel-body" >
+          <%= RDiscount.new(lab.readme).to_html %>
+        </div>
+      <% end %>
+    </div>
+
   <% else %>
     Sorry, no labs to display.
   <% end %>

@@ -7103,3 +7103,11 @@ td.visible-print {
     display: none !important;
   }
 }
+
+.show_readme {
+    display: none;
+}
+
+.readme {
+  background-color: white;
+}
