@@ -14,7 +14,6 @@
 
 NEXT:
 - page right (lab)   => README in GitHub flavored markdown
-
 - deploy-a-lab functionality
 - deployed lab can have a "deployed in semeseter" tag
 - page right (index) => most recent commits
