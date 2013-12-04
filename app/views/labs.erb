@@ -8,12 +8,13 @@
       <% @matching_labs.each_with_index do |lab, n| %>
         <li class="list-group-item">
         <a href="<%= lab.github_url.gsub("git@github.com:", "https://github.com/") %>"><%= lab.name %></a> 
+        <button class="badge">DEPLOY</button>
         <button class="badge show_readme" data-id="<%= n %>">README</button>
         </li>
       <% end %>
     </ul>
 
-    <div class="panel panel-default">
+    <div>
       <% @matching_labs.each_with_index do |lab, n| %>
         <div id="p<%= n %>" class="col-md-4 readme panel-body" >
           <%= RDiscount.new(lab.readme).to_html %>

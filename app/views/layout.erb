@@ -13,13 +13,14 @@
     
     <%= yield %>
 
-    <ul class="list-group col-md-4 pull-right">
-      <% @labs.first.commit_history.each do |commit| %>
+    <ul class="list-group col-md-4 pull-right" id="moveMe">
+      <a class="list-group-item active">Recent Commits</a>
+      <% @labs.last.commit_history.each do |commit| %>
       <!-- Putting most recent GitHub activity for labs here -->
         <div class="list-group-item">
+          <span><img src='<%= commit.avatar %>' height='32'></span>
           <span><%= commit.message %></span>
           <span class="badge"><%= commit.name %></span> 
-          <span><img src='<%= commit.avatar %>' height='32'></span>
         </div>
       <% end %>
     </ul>

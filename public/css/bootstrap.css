@@ -46,14 +46,14 @@ html {
 }
 
 body {
-  margin: 15px;
+  margin: 10px;
 }
 
 .background { 
   background-image: url("./../images/flatiron.jpg");
-  background-size: 100%;
+  background-size: cover;
   background-repeat: no-repeat;
-  background-position: 50% 20%; 
+  background-position: 50% 20%;
 }
 
 a {
