@@ -7,12 +7,19 @@
     <ul class="list-group col-md-4">
       <% @matching_labs.each_with_index do |lab, n| %>
         <li class="list-group-item">
-        <a href="<%= lab.github_url.gsub("git@github.com:", "https://github.com/") %>"><%= lab.name %></a> 
-        <button class="badge">DEPLOY</button>
-        <button class="badge show_readme" data-id="<%= n %>">README</button>
+          <a href="<%= lab.github_url.gsub("git@github.com:", "https://github.com/") %>"><%= lab.name %></a> 
+
+          <!-- Button trigger modal -->
+          <button class="badge" data-id="<%= lab.name %>" data-toggle="modal" data-target="#myModal<%= lab.name %>">DEPLOY</button>
+
+          <!-- Deploy modal partial -->
+          <%= partial :deploy, :locals => {lab: lab } %>
+
+          <button class="badge show_readme" data-id="<%= n %>">README</button>
         </li>
       <% end %>
     </ul>
+    
 
     <div>
       <% @matching_labs.each_with_index do |lab, n| %>

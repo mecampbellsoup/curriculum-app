@@ -1,6 +1,7 @@
 require 'yaml'
 require 'json'
 require 'open-uri'
+require 'sinatra/form_helpers'
 
 Dotenv.load
 

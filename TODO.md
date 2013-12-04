@@ -13,8 +13,10 @@
 1. rethink the tag format? maybe more like deli.cio.us
 
 NEXT:
-- page right (lab)   => README in GitHub flavored markdown
 - deploy-a-lab functionality
+- get modal to have knowledge of which lab it represents
+
+
 - deployed lab can have a "deployed in semeseter" tag
 - page right (index) => most recent commits
 - git rid of url.txt files from the repos 

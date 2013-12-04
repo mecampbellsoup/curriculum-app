@@ -30,4 +30,8 @@ class ReposController < ApplicationController
     erb :labs
   end
 
+  post '/:lab/deploy' do
+    # code for deploying new repo goes here!
+  end
+
 end
