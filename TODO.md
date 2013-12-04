@@ -14,15 +14,15 @@
 
 
 NEXT:
-- fix README and DEPLOY buttons/submits
-
 - deploy-a-lab functionality
-- need to get this working
+- need to get this working!
 
 - page right (index) => most recent commits
 - need to apply some logic to this - which labs?
+- flatten all commits and sort by date, return most recent 5
 
 - replicate rails' rake: notes raketask
 
 - git rid of url.txt files from the repos 
 - what to do with the search bar?
+- how about: fuzzy search for explicit lab names (names only)

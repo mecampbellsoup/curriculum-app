@@ -9,19 +9,21 @@
         <li class="list-group-item">
           <a href="<%= lab.github_url.gsub("git@github.com:", "https://github.com/") %>"><%= lab.name %></a> 
 
+          <!-- Button trigger README -->
+          <button class="badge show_readme" data-id="<%= n %>">README</button>
+
           <!-- Button trigger modal -->
           <button class="badge" data-id="<%= lab.name %>" data-toggle="modal" data-target="#myModal<%= lab.name %>">DEPLOY</button>
 
           <!-- Deploy modal partial -->
           <%= deploy_partial(lab) %>
-
-          <button class="badge show_readme" data-id="<%= n %>">README</button>
+          
         </li>
       <% end %>
     </ul>
     
 
-    <div class="hero-unit">
+    <div>
       <% @matching_labs.each_with_index do |lab, n| %>
         <div id="p<%= n %>" class="col-md-4 readme panel-body" >
           <%= RDiscount.new(lab.readme).to_html %>

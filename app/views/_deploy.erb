@@ -4,7 +4,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">you selected: <%= lab.name %></h4>
+        <h4 class="modal-title" id="myModalLabel">you selected: <strong><%= lab.name %></strong></h4>
       </div>
       <div class="modal-body">
         <span>Which class & semeseter is this new lab repo for?</span><br><br>
@@ -17,8 +17,8 @@
         <% end %>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <%= submit 'Deploy!', {:class => "btn btn-primary", :type => "button"} %>
+        <%= submit 'Close', {:class => "btn btn-warning", data_dismiss: "modal" } %>
+        <%= submit 'Deploy!', {:class => "btn btn-primary"} %>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
