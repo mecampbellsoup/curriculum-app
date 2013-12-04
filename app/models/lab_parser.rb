@@ -30,7 +30,7 @@ class LabParser
       :readme => readme.read,
       :tags => YAML.load(yaml_readme),
       :name => File.basename(lab_dir),
-      :github_url => url_file.read.strip,
+      :github_url => url_file.read.strip
     }
     lab_commits = {
       :commit_history => GitHubApi.get_commits(lab_attrs[:github_url].match(/\/(.*).git$/)[1])

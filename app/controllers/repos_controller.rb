@@ -32,6 +32,19 @@ class ReposController < ApplicationController
 
   post '/:lab/deploy' do
     # code for deploying new repo goes here!
+    class_id, semester_id = params[:deploy][:class], params[:deploy][:semester]
+    new_lab_name = "#{params[:lab]}-#{class_id}-#{semester_id}"
+    path = File.join(Dir.pwd, "/lib/create_remote.sh")
+    origin_master_url = Lab.find_by_name(params[:lab]).github_url.gsub(params[:lab], new_lab_name)
+    local_lab_path = File.join(Dir.pwd, "/curriculum/#{params[:lab]}")
+    system("source #{path} '#{ENV['GITHUB_OAUTH_TOKEN']}' '#{new_lab_name}' '#{local_lab_path}' '#{origin_master_url}'")
+    redirect to "/"
   end
+
+  # private
+
+  # def repo_params
+  #   params.must_include_key(:lab).permit(:class, :semester)
+  # end
 
 end

@@ -14,6 +14,7 @@ class ApplicationController < Sinatra::Base
 
   # Configure Sinatra to reload directories like models and controllers.
   configure :development, :test do
+    enable :logging, :dump_errors, :raise_errors
     register Sinatra::Reloader
     Dir.glob(File.join(root, "/app/models") + "/*") do |path|
       also_reload path
