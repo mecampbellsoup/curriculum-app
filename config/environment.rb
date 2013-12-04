@@ -1,7 +1,6 @@
 require 'yaml'
 require 'json'
 require 'open-uri'
-require 'sinatra/form_helpers'
 
 Dotenv.load
 
@@ -21,6 +20,7 @@ end
 
 # Explicitly require view helpers first here so they can be mixed-in with my controllers
 require_relative '../app/helpers/date_helper'
+require_relative '../app/helpers/require_helper'
 
 Dir.foreach(RootFolder) do |file|
   next if file.start_with?('.') || file.start_with?('curriculum')

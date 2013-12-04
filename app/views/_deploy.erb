@@ -6,19 +6,19 @@
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 class="modal-title" id="myModalLabel">you selected: <strong><%= lab.name %></strong></h4>
       </div>
-      <div class="modal-body">
-        <span>Which class & semeseter is this new lab repo for?</span><br><br>
-        <%= form("/#{lab.name}/deploy", :post) %>
-        <% fieldset(:lab) do |f| %>
-          <%= f.label :class, nil, :style => "text-align:left; float:left; display:block; margin-right: 0.5em; width: 6em;" %>
-          <%= f.input :class, {:placeholder => "e.g. ruby, iOS"} %><br>
-          <%= f.label :semester, nil, :style => "text-align:left; float:left; display:block; margin-right: 0.5em; width: 6em;" %>
-          <%= f.input :semester, {:placeholder => "e.g. 004"} %>
-        <% end %>
-      </div>
-      <div class="modal-footer">
-        <%= submit 'Close', {:class => "btn btn-warning", data_dismiss: "modal" } %>
-        <%= submit 'Deploy!', {:class => "btn btn-primary"} %>
+      <div id="form-div">
+        <form action="/<%= lab.name %>/deploy" method="POST">
+          <div class="modal-body">
+            <span>Which class & semeseter is this new lab repo for?</span><br><br>
+            <label for="deploy_class" style="text-align:left; float:left; display:block; margin-right: 0.5em; width: 6em;">Class</label>
+            <input id="deploy_class" name="deploy[class]" placeholder="e.g. ruby, iOS" type="text"><br>
+            <label for="deploy_semeseter" style="text-align:left; float:left; display:block; margin-right: 0.5em; width: 6em;">Semester</label>
+            <input id="deploy_semester" name="deploy[semester]" placeholder="e.g. 004" type="text">
+          </div>
+          <div class="modal-footer">
+            <%= submit 'Deploy!', {:class => "btn btn-primary"} %>
+          </div>
+        </form>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
