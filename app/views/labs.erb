@@ -1,4 +1,4 @@
-<%= partial :breadcrumbs, :locals => {filter: @tag, filter_id: @tag_id} %>
+<%= breadcrumbs_partial(@tag, @tag_id) %>
 
 <div style="clear:both;">
   <% if !@matching_labs.empty? %>
@@ -13,7 +13,7 @@
           <button class="badge" data-id="<%= lab.name %>" data-toggle="modal" data-target="#myModal<%= lab.name %>">DEPLOY</button>
 
           <!-- Deploy modal partial -->
-          <%= partial :deploy, :locals => {lab: lab } %>
+          <%= deploy_partial(lab) %>
 
           <button class="badge show_readme" data-id="<%= n %>">README</button>
         </li>
@@ -21,7 +21,7 @@
     </ul>
     
 
-    <div>
+    <div class="hero-unit">
       <% @matching_labs.each_with_index do |lab, n| %>
         <div id="p<%= n %>" class="col-md-4 readme panel-body" >
           <%= RDiscount.new(lab.readme).to_html %>

@@ -9,14 +9,14 @@
   </head>
   <body class='background'>
     <%= partial :navbar %>
-    <%#= partial :test, :locals => {test: "TESTING, 1-2-3!"} %>
-    
+
     <%= yield %>
 
     <!-- Commit history here -->
     <ul class="list-group col-md-4 pull-right" id="moveMe">
       <a class="list-group-item active">Recent Commits</a>
-      <% @labs.last.commit_history.each do |commit| %>
+      <!-- TODO: build logic into this -->
+      <% @labs.first.commit_history.each do |commit| %>
       <!-- Putting most recent GitHub activity for labs here -->
         <div class="list-group-item">
           <span><img class='media-object' src='<%= commit.avatar %>' height='40em'></span>

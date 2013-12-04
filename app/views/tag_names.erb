@@ -1,4 +1,4 @@
-<%= partial :breadcrumbs, :locals => {filter: @tag, filter_id: nil} %>
+<%= breadcrumbs_partial(@tag) %>
 
 <div style="clear:both;">
   <% if !@tag_names.empty? %>

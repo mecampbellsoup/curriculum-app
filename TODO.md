@@ -12,12 +12,17 @@
 ##questions/discussion for Avi
 1. rethink the tag format? maybe more like deli.cio.us
 
+
 NEXT:
+- fix README and DEPLOY buttons/submits
+
 - deploy-a-lab functionality
-- get modal to have knowledge of which lab it represents
+- need to get this working
 
-
-- deployed lab can have a "deployed in semeseter" tag
 - page right (index) => most recent commits
+- need to apply some logic to this - which labs?
+
+- replicate rails' rake: notes raketask
+
 - git rid of url.txt files from the repos 
 - what to do with the search bar?

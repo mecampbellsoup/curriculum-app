@@ -21,4 +21,14 @@ class ApplicationController < Sinatra::Base
     also_reload File.join(root, "/app/concerns/searchable.rb")
   end
 
+  helpers do
+    def deploy_partial(lab)
+      erb :_deploy, :locals => { lab: lab }
+    end
+
+    def breadcrumbs_partial(filter, filter_id=nil)
+      erb :_breadcrumbs, :locals => { filter: filter, filter_id: filter_id }
+    end
+  end
+
 end
