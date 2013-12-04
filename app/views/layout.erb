@@ -16,12 +16,15 @@
     <ul class="list-group col-md-4 pull-right" id="moveMe">
       <a class="list-group-item active">Recent Commits</a>
       <!-- TODO: build logic into this -->
-      <% @labs.first.commit_history.each do |commit| %>
-      <!-- Putting most recent GitHub activity for labs here -->
+      <% @labs.each do |lab| %>
+        <% commit = lab.commit_history.first %>
+        <!-- Putting most recent GitHub activity for labs here -->
         <div class="list-group-item">
-          <span><img class='media-object' src='<%= commit.avatar %>' height='40em'></span>
-          <span><%= commit.message %></span>
-          <span class="badge"><%= commit.name %></span> 
+          <span><img class='media-object' src='<%= commit.avatar %>' height='50em'></span>
+          <span><%= lab.name %> </span>
+          <span><%= commit.message %> </span> 
+          <span><%= commit.date.stamp("Jan 1 at 01:00 AM")  %></span> 
+          <span class="badge"><a href="<%=commit.html%>"><%=commit.name%></a></span> 
         </div>
       <% end %>
     </ul>

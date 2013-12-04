@@ -22,21 +22,16 @@
       <% end %>
     </ul>
     
-
-    <div>
-      <% @matching_labs.each_with_index do |lab, n| %>
-        <div id="p<%= n %>" class="col-md-4 readme panel-body" >
-          <%= RDiscount.new(lab.readme).to_html %>
-        </div>
-      <% end %>
-    </div>
+    <% @matching_labs.each_with_index do |lab, n| %>
+      <div id="p<%= n %>" class="col-md-4 readme panel panel-default">
+        <%= RDiscount.new(lab.readme).to_html %>
+      </div>
+    <% end %>
 
   <% else %>
     Sorry, no labs to display.
   <% end %>
 </div>
-<!-- Keep this around for later... -->
-<%#= lab.github_url.gsub("git@github.com:", "https://github.com/") %>
 
 
       

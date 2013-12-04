@@ -22,4 +22,5 @@ class Lab
   def self.find_by_name(name)
     all.select { |lab| lab.name == name }.first
   end
+
 end

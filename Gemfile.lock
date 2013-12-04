@@ -75,6 +75,7 @@ GEM
     sinatra-partial (0.4.0)
       sinatra
     slop (3.4.7)
+    stamp (0.5.0)
     thin (1.6.0)
       daemons (>= 1.0.9)
       eventmachine (>= 1.0.0)
@@ -100,4 +101,5 @@ DEPENDENCIES
   sinatra-contrib
   sinatra-formhelpers
   sinatra-partial
+  stamp
   thin
