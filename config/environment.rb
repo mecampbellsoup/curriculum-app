@@ -19,6 +19,7 @@ def get_reqs(current_dir)
 end
 
 # Explicitly require view helpers first here so they can be mixed-in with my controllers
+require_relative '../app/concerns/searchable'
 require_relative '../app/helpers/date_helper'
 require_relative '../app/helpers/require_helper'
 require_relative './initializers/redcarpet'

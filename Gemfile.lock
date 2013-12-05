@@ -10,6 +10,12 @@ GEM
     addressable (2.3.5)
     atomic (1.1.14)
     backports (3.3.5)
+    capistrano (2.15.5)
+      highline
+      net-scp (>= 1.0.0)
+      net-sftp (>= 2.0.0)
+      net-ssh (>= 2.0.14)
+      net-ssh-gateway (>= 1.1.0)
     coderay (1.1.0)
     daemons (1.1.9)
     diff-lcs (1.2.5)
@@ -19,6 +25,7 @@ GEM
       multipart-post (~> 1.2.0)
     github-markup (1.0.0)
     hashie (2.0.5)
+    highline (1.6.20)
     httpauth (0.2.0)
     i18n (0.6.5)
     json (1.8.1)
@@ -28,6 +35,13 @@ GEM
     minitest (4.7.5)
     multi_json (1.8.2)
     multipart-post (1.2.0)
+    net-scp (1.1.2)
+      net-ssh (>= 2.6.5)
+    net-sftp (2.1.2)
+      net-ssh (>= 2.6.5)
+    net-ssh (2.7.0)
+    net-ssh-gateway (1.2.0)
+      net-ssh (>= 2.6.5)
     oauth2 (0.8.1)
       faraday (~> 0.8)
       httpauth (~> 0.1)
@@ -65,6 +79,8 @@ GEM
     rspec-expectations (2.14.4)
       diff-lcs (>= 1.1.3, < 2.0)
     rspec-mocks (2.14.4)
+    rvm-capistrano (1.5.1)
+      capistrano (~> 2.15.4)
     sawyer (0.5.1)
       addressable (~> 2.3.5)
       faraday (~> 0.8, < 0.10)
@@ -100,6 +116,7 @@ PLATFORMS
 
 DEPENDENCIES
   activesupport
+  capistrano (~> 2.0)
   dotenv
   github-markup
   json
@@ -110,6 +127,7 @@ DEPENDENCIES
   rdiscount
   redcarpet
   rspec
+  rvm-capistrano
   sinatra
   sinatra-contrib
   sinatra-flash
