@@ -12,7 +12,6 @@ class ReposController < ApplicationController
   post '/search' do
     @matching_labs = Lab.find_by_search_query(params["query"])
     @tags = Lab.get_tags(@matching_labs)
-    @tag = @tags.sample
     erb :labs
   end
 
@@ -27,11 +26,6 @@ class ReposController < ApplicationController
   get '/:tag/:tag_id' do
     @tag, @tag_id = params[:tag], params[:tag_id]
     @matching_labs = Lab.matching_tag_id(@labs, @tag, @tag_id)
-    # @matching_labs.each do |lab|
-    #   binding.pry
-    #   lab.readme.gsub!(/-{3}.*-{3}/, "")
-    #   # need to escape the newlines i think...
-    # end
     erb :labs
   end
 

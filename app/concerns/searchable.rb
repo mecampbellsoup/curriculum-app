@@ -1,6 +1,7 @@
 module Searchable
 
   def get_tags(labs)
+    return nil if labs.empty?
     labs.collect { |lab| lab.tags.keys }.flatten.uniq
   end
 

@@ -5520,7 +5520,7 @@ a.thumbnail.active {
 
 .media,
 .media .media {
-  margin-top: 15px;
+  margin-top: 5px;
 }
 
 .media:first-child {
@@ -5557,6 +5557,7 @@ a.thumbnail.active {
   position: relative;
   display: block;
   padding: 10px 15px;
+  margin-top: 5px;
   margin-bottom: -1px;
   background-color: #ffffff;
   border: 1px solid #dddddd;

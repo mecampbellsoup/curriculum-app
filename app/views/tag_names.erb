@@ -5,15 +5,20 @@
   <!-- @tag_names is an array of arrays -->
     <div class="list-group col-md-4">
       <a class="list-group-item active">
-        <%= @tag.capitalize %>
+        <h4><%= @tag.capitalize %></h4>
       </a>
 
       <% @tag_names.each do |name| %>
-        <a href="/<%= @tag %>/<%= name %>" class="list-group-item"><%= name %></a>
+        <a href="/<%= @tag %>/<%= name %>" class="list-group-item">
+          <h4><%= name %></h4>
+        </a>
       <% end %>
     </div>
   <% else %>
-    Sorry, no tag names to display.
+    <div class="jumbotron">
+      <h1>Sorry, no tag ID's to display.</h1>
+      <p>Why don't you try searching for a lab instead?</p>
+    </div>
   <% end %>
 </div>
 

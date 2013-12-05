@@ -2,10 +2,10 @@
 <!-- @tags is an array of arrays -->
   <div class="list-group col-md-4">
     <a class="list-group-item active">
-      Filters
+      <h4>Filters</h4>
     </a>
     <% @tags.each do |tag| %>
-      <a href="/<%= tag %>" class="list-group-item"><%= tag %></a>  
+      <a href="/<%= tag %>" class="list-group-item"><h4><%= tag %></h4></a>  
     <% end %>
   </div>  
 <% else %>

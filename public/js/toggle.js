@@ -1,7 +1,9 @@
-$('.show_readme').show(); //show buttons
-$('.readme').hide(); // hide all readmes
- 
-$('.show_readme').click(function(e){
+$(document).ready(function(){
+
+  $('.show_readme').show(); //show buttons
+  $('.readme').hide(); // hide all readmes
+   
+  $('.show_readme').click(function(e){
 
     e.preventDefault();
     var readme_id = $(this).data('id');
@@ -12,4 +14,11 @@ $('.show_readme').click(function(e){
       $('.readme').hide();
       $('#p'+readme_id).fadeToggle(200, "linear");
     }
-});
+  });
+
+  $('#searchFocus').click(function(){
+    $('#labSearch').focus();
+  });
+
+})
+

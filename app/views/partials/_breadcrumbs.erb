@@ -1,7 +1,17 @@
-<ol class="breadcrumb col-md-4";'>
-  <li><a href="/">Filters</a></li>
-  <li><a href="/<%= filter %>"><%= filter.capitalize %></a></li>
+<ol class="breadcrumb col-md-4">
+  <li>
+    <a href="/">
+      <button class="btn btn-sm btn-default">Filters</button>
+    </a>
+  </li>
+
+  <li><a href="/<%= filter %>"><button class="btn btn-sm btn-default"><%= filter.capitalize %></button></a></li>
+
   <% if filter_id %>
-  <li><a href="/<%= filter_id %>"><%= filter_id %></a></li>
+    <li>
+      <a href="/<%= filter %>/<%= filter_id %>">
+        <button class="btn btn-sm btn-default"><%= filter_id %></button>
+      </a>
+    </li>
   <% end %>
 </ol>
