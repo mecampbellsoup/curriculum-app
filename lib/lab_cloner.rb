@@ -8,6 +8,10 @@
 class LabCloner
   attr_reader :urls
 
+  def check_lab_for_readme_with_yaml(repo_url)
+    
+  end
+
   def initialize(*urls)
     # need to pass multiple strings comma separated
     @urls = urls

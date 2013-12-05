@@ -10,4 +10,5 @@ git commit -m "New lab for you nerds!";
 git remote add origin $4;
 git config
 git push origin master;
-rm -rf .;
+cd ..;
+rm -rf -- $2;

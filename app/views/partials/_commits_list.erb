@@ -1,0 +1,25 @@
+<!-- Commit history here -->
+<ul class="list-group col-md-4 pull-right" id="moveMe">
+  
+  <a class="list-group-item active"><h3>Recent Commits</h3></a>
+  
+  <!-- TODO: build logic into this -->
+  <% labs.each do |lab| %>
+    
+    <!-- Putting most recent GitHub activity for labs here -->
+    <% commit = lab.commit_history.first %>
+
+    <div class="list-group-item media">
+      <a class="pull-left" href="">
+        <img class="media-object" src='<%= commit.avatar %>' height='72em'>
+      </a>
+      <div class="media-body">
+        <h4 class="media-heading"><%= lab.name %></h4>
+        <p class='media-text'><%= commit.message %></p>
+        <span class='badge pull-right'><a href="<%=commit.html%>"><%=commit.name%></a></span>
+        <p class='media-text'><%= commit.date.strftime("%a, %b. %e %Y @ %l:%M %p") %></p>
+      </div>
+    </div>
+        
+  <% end %>
+</ul>

@@ -1,5 +1,5 @@
 ---
-language: ruby
+languages: ruby
 tags: sinatra, rails, activerecord, associations, models, views, controllers
 ---
 

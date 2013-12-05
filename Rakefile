@@ -24,7 +24,17 @@ task :clone_repos => [:environment] do
   cloner = LabCloner.new(
       'git@github.com:flatiron-school/flatiron-kitchen-ruby-003.git',
       'git@github.com:flatiron-school/amoeba-circus-on-rails-ruby-003.git',
-      'git@github.com:flatiron-school/pollywog-ranch-associations-ruby-003.git'
+      'git@github.com:flatiron-school/pollywog-ranch-associations-ruby-003.git',
+      'git@github.com:flatiron-school/the-big-todo-ruby-003.git',
+      'git@github.com:flatiron-school/activerecord-tvland-ruby-003.git',
+      'git@github.com:flatiron-school/using-bundler-ruby-003.git',
+      'git@github.com:flatiron-school/sinatra-students-ruby-003.git',
+      'git@github.com:flatiron-school/sinatra-orm-halloween-ruby-003.git',
+      'git@github.com:flatiron-school/lab-forms-in-sinatra-ruby-003.git',
+      'git@github.com:flatiron-school/sinatra-pigeon-ruby-003.git',
+      'git@github.com:flatiron-school/sinatra-adventure-ruby-003.git',
+      'git@github.com:flatiron-school/sequel-orms-ruby-003.git',
+      'git@github.com:flatiron-school/sinatra-rspec-intro-ruby-003.git'
   )
   cloner.call
 end

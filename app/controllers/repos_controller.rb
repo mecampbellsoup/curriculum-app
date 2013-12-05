@@ -6,8 +6,14 @@ class ReposController < ApplicationController
   end
 
   get '/' do
-    # @tags = Lab.get_tags(@labs)
     erb :tags
+  end
+
+  post '/search' do
+    @matching_labs = Lab.find_by_search_query(params["query"])
+    @tags = Lab.get_tags(@matching_labs)
+    @tag = @tags.sample
+    erb :labs
   end
 
   get '/:tag' do
@@ -18,15 +24,14 @@ class ReposController < ApplicationController
     erb :tag_names
   end
 
-  get '/:lab/readme' do
-    @lab = Lab.find_by_name(params[:lab])
-    @lab.readme = RDiscount.new(@lab.readme).to_html
-    erb :readme
-  end
-
   get '/:tag/:tag_id' do
     @tag, @tag_id = params[:tag], params[:tag_id]
     @matching_labs = Lab.matching_tag_id(@labs, @tag, @tag_id)
+    # @matching_labs.each do |lab|
+    #   binding.pry
+    #   lab.readme.gsub!(/-{3}.*-{3}/, "")
+    #   # need to escape the newlines i think...
+    # end
     erb :labs
   end
 

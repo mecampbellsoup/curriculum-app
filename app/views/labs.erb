@@ -1,19 +1,27 @@
-<%= breadcrumbs_partial(@tag, @tag_id) %>
+<% if @tag && @tag_id %>
+  <%= breadcrumbs_partial(@tag, @tag_id) %>
+<% end %>
 
 <div style="clear:both;">
   <% if !@matching_labs.empty? %>
   <!-- @matching_labs is an array of hashes -->
    
     <ul class="list-group col-md-4">
+      <a class="list-group-item active">
+        <h3>Matching Labs</h3>
+      </a>
       <% @matching_labs.each_with_index do |lab, n| %>
         <li class="list-group-item">
           <a href="<%= lab.github_url.gsub("git@github.com:", "https://github.com/") %>"><%= lab.name %></a> 
 
           <!-- Button trigger README -->
-          <button class="badge show_readme" data-id="<%= n %>">README</button>
+          <button class="badge" data-toggle="modal" data-target="#readmeModal<%= lab.name %>">README</button>
+
+          <!-- Deploy README partial -->
+          <%= readme_partial(lab) %>
 
           <!-- Button trigger modal -->
-          <button class="badge" data-id="<%= lab.name %>" data-toggle="modal" data-target="#myModal<%= lab.name %>">DEPLOY</button>
+          <button class="badge" data-toggle="modal" data-target="#myModal<%= lab.name %>">DEPLOY</button>
 
           <!-- Deploy modal partial -->
           <%= deploy_partial(lab) %>
@@ -21,12 +29,6 @@
         </li>
       <% end %>
     </ul>
-    
-    <% @matching_labs.each_with_index do |lab, n| %>
-      <div id="p<%= n %>" class="col-md-4 readme panel panel-default">
-        <%= RDiscount.new(lab.readme).to_html %>
-      </div>
-    <% end %>
 
   <% else %>
     Sorry, no labs to display.

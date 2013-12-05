@@ -1,5 +1,6 @@
 require 'sinatra/form_helpers'
 require 'sinatra/flash'
+require 'github/markup'
 
 class ApplicationController < Sinatra::Base
 
@@ -28,20 +29,25 @@ class ApplicationController < Sinatra::Base
 
   helpers do
     def deploy_partial(lab)
-      erb :_deploy, :locals => { lab: lab }
+      partial 'partials/deploy', :locals => { lab: lab }
+    end
+
+    def readme_partial(lab)
+      partial 'partials/readme', :locals => { lab: lab }
     end
 
     def breadcrumbs_partial(filter, filter_id=nil)
-      erb :_breadcrumbs, :locals => { filter: filter, filter_id: filter_id }
+      partial 'partials/breadcrumbs', :locals => { filter: filter, filter_id: filter_id }
     end
 
     def flash_messages_partial(flash)
-      erb :_flash_messages, :locals => { flash: flash }
+      partial 'partials/flash_messages', :locals => { flash: flash }
     end
 
     def bootstrap_class_for(flash_type)
       {success: 'alert-success', error: 'alert-error', warning: 'alert-warning'}[flash_type] || flash_type.to_s
     end
+
   end
 
 end

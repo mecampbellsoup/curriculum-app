@@ -4,31 +4,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Flatiron Curriculizer</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/curriculum.css" rel="stylesheet">
     <!-- Bootstrap -->
     <link href="/css/bootstrap.css" rel="stylesheet">
   </head>
   <body class='background'>
-    <%= partial :navbar %>
+    <%= partial 'partials/navbar' %>
     <%= flash_messages_partial(flash) %>
 
     <%= yield %>
 
-    <!-- Commit history here -->
-    <ul class="list-group col-md-4 pull-right" id="moveMe">
-      <a class="list-group-item active">Recent Commits</a>
-      <!-- TODO: build logic into this -->
-      <% @labs.each do |lab| %>
-        <% commit = lab.commit_history.first %>
-        <!-- Putting most recent GitHub activity for labs here -->
-        <div class="list-group-item">
-          <span><img class='media-object' src='<%= commit.avatar %>' height='50em'></span>
-          <span><%= lab.name %> </span>
-          <span><%= commit.message %> </span> 
-          <span><%= commit.date.stamp("Jan 1 at 01:00 AM")  %></span> 
-          <span class="badge"><a href="<%=commit.html%>"><%=commit.name%></a></span> 
-        </div>
-      <% end %>
-    </ul>
+    <%= partial :'partials/commits_list', :locals => { labs: @labs } %>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://code.jquery.com/jquery.js"></script>

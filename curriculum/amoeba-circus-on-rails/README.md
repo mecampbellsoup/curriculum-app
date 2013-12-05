@@ -3,7 +3,7 @@ languages: ruby
 tags: rails, active record associations, scaffolding, beginner
 ---
 
-<img src="./amoeba-circus-medium.jpg" alt="Amoeba Circus">
+<img src="https://lh5.googleusercontent.com/-IYKnmT9NcnI/Up_eN0hCJJI/AAAAAAAABxc/YuOkkpD_s4Y/s600/amoeba-circus-medium.jpg" alt="Amoeba Circus">
 
 # Amoeba Circus on Rails
 

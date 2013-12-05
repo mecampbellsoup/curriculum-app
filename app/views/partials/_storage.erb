@@ -1,0 +1,15 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title"><%= @lab.name %></h3>
+  </div>
+  <div class="panel-body">
+    <%= @lab.readme %>
+  </div>
+</div>
+
+
+    <% @matching_labs.each_with_index do |lab, n| %>
+      <div id="p<%= n %>" class="col-md-4 readme panel panel-default">
+        <%= RDiscount.new(lab.readme).to_html %>
+      </div>
+    <% end %>

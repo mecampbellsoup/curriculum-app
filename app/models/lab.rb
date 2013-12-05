@@ -9,8 +9,8 @@ class Lab
   def initialize(args)
     @name = args[:name]
     @tags = args[:tags]
+    @readme = args[:readme]
     @github_url = args[:github_url]
-    @readme = args[:readme] 
     @commit_history = args[:commit_history]
     @@all << self
   end
@@ -19,8 +19,8 @@ class Lab
     @@all
   end
 
-  def self.find_by_name(name)
-    all.select { |lab| lab.name == name }.first
+  def self.find_by_search_query(query)
+    all.select { |lab| lab.name =~ /#{query}/ }
   end
 
 end
