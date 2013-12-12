@@ -41,6 +41,6 @@ LabHashes = readmes.map do |lab_hash|
     next
   end
   { :ssh => lab_hash[:ssh], :link => lab_hash[:link], :yaml_tags => yaml_tags }
-end.compact.select { |yaml_readme| yaml_readme.is_a? Hash }
+end.compact.select { |lab_hash| lab_hash[:yaml_tags].is_a? Hash }
 
 # Now I have an array of links and the associated YAML tags...
