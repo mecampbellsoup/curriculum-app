@@ -1,0 +1,438 @@
+html, body {
+  height: 100%;
+  #wrapper {
+    min-height: 100%;
+  }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+div#wrapper {
+  width: 100%;
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 40px 0px -41px 0px;
+}
+
+div#content_wrapper {
+   width: 100%;
+   height: 100%;
+   padding: 0px 0px 41px 0px;
+ }
+
+footer {
+  width: 100%;
+  height: 41px;
+  background-color: black;
+}
+
+.bottom-page-buttons {
+  margin-top: 50px;
+  height: 200px;
+}
+
+.controls.edit-user {
+  margin-left: 0;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.controls.new-feature {
+  text-align: left;
+}
+
+.slideshow-button-list {
+  text-decoration: none;
+  list-style: none;
+  li {
+    display: inline-block;
+  }
+}
+
+#features-title {
+  display: inline;
+  padding-right: 0;
+}
+
+#features-slide {
+  padding: 0;
+  margin: 0;
+
+  background-color: #f2ffee;
+  width: 100%;
+  overflow-x: auto;
+  overflow-wrap: scroll;
+  white-space: nowrap;
+}
+
+.feature {
+  padding: 0;
+  border: none;
+  background-color: #CCC9B4;
+  margin-bottom: 0;
+  margin-top: 0;
+  display: inline-block;
+  width: 27%; // CHANGE THIS TO CHANGE WIDTH OF FEATURE BOX
+  height: 70px;
+  vertical-align: bottom;
+}
+
+.feature h2, h3 {
+
+  // margin-left: 20px;
+  font-weight: 400;
+  // color: #FFFFFF; micah changed!!!
+  vertical-align: middle;
+  text-overflow: ellipsis;
+  white-space: normal;
+  word-wrap: break-word;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+input#search {
+  margin-top : 7px;
+  padding : 0px 5px;
+  width : 150px;
+  height : 25px;
+}
+
+.creator {
+  h3{
+    margin-top: 17px;
+  }
+}
+
+.navbar-inner {
+  padding: 0px;
+  height: 20px;
+}
+
+.feature h2 {
+  cursor: pointer;
+}
+
+.selected {
+  border: none;
+  background-color: #343838;
+  // border-bottom: 3px solid #cb3120;
+  h2 {
+    color: white;
+  }
+}
+
+.login-box {
+  text-align: center;
+  .icon-github {
+    font-size: 1.7em;
+  }
+}
+
+.top-create-account {
+/*  background-color: #538187 !important;*/
+  /*jennifer changed */
+}
+
+.icon-cog {
+  color: white;
+  font-size: 1.3em;
+  padding: 0 5px;
+}
+
+.top-account-control {
+  width: 250px;
+}
+
+.slides-custom {
+  padding: 100px
+}
+
+.picture-slide-size {
+  height: 700px
+}
+
+.pager-custom {
+  float:left
+}
+
+.btn:hover,
+.btn:focus,
+.btn:active,
+.btn.active,
+.btn.disabled,
+.btn[disabled] {
+  color: #538187;
+  background-color: white;
+}
+
+.btn-primary-green:hover,
+.btn-primary-green:focus,
+.btn-primary-green:active,
+.btn-primary-green.active,
+.btn-primary-green.disabled,
+.btn-primary-green[disabled] {
+  color: black;
+  background-color: #538187;
+  *background-color: #26869c;
+}
+
+.gg-button-container {
+  width: 1000px;
+}
+
+.gg-multiple-buttons {
+  display: inline-block;
+  float: right;
+}
+
+.buttons-with-margins {
+  margin: 30px;
+}
+
+.gg-notice {
+  padding-top: 20px;
+  font-size: 20px;
+  color: red;
+}
+
+.gg-project-hero-title {
+  display: inline-block;
+  font-size: 50px;
+  padding-top: 50px;
+  padding-bottom: 30px;
+  float: left;
+}
+
+.gg-project-edit {
+  float:right;
+  padding-top: 50px;
+}
+
+.techs {
+  font-size: 20px;
+  margin-left: 100px;
+}
+
+.gg-project-tabs-custom {
+  background-color: #cff5ff;
+}
+
+.filler {
+  height: 250px; // This is for the feature edit page so you will have space at the bottom of the page for techs to show
+} // Added by Micah
+
+.gg-project-show-description-custom {
+  color: #FFFFFF;
+}
+
+.gg-feature-description-custom {
+  width: 80%;
+  float: left;
+}
+
+.gg-feature-author-custom {
+  width: 20%;
+  float: right;
+}
+
+.span12-custom {
+  width: 100%;
+  margin-left: -10px;
+  text-align: center;
+}
+
+.accordion-feat-name-custom {
+  font-size: 30px;
+  text-align: center;
+  padding-bottom: 10px
+}
+
+.accordion-feat-upload-custom {
+  padding-top: 50px;
+  padding-left: 70px;
+  padding-right: 70px;
+  padding-bottom: 0px;
+  height: auto;
+  text-align: left;
+}
+
+.accordion-feat-author {
+  text-align: center;
+  margin-left: 0px;
+  float: right;
+}
+
+.accordion-feat-name-custom {
+  text-align: center;
+}
+
+.accordion-feat-pagination {
+  font-size: 16px;
+  text-align: center;
+}
+
+.accordion-feat-title {
+  margin-bottom: 30px;
+}
+
+.accordion-feat-description-custom {
+  margin: 10px;
+  padding:10px;
+  margin-left: 0px;
+}
+
+.accordion-slide-description-custom {
+  font-size: 25px;
+  line-height: 35px;
+  padding-top: 50px;
+  padding-bottom: 20px;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.add-slides-custom {
+  float: center;
+}
+
+.accordion-edit-custom {
+  float: right;
+  margin-right: 70px;
+}
+
+.project-title-custom {
+  margin: 0px;
+  padding: 0px;
+  text-align: center;
+  float: center;
+}
+
+.text-field-custom {
+  text-align: center;
+  margin-top: 27px;
+}
+
+
+#search {
+
+}
+
+#search input[type="text"] {
+ 
+    background: url(search-dark.png) no-repeat 10px 6px #242828;
+    border: 0 none;
+    /*font: bold 12px Arial,Helvetica,Sans-serif;*/
+    font-family: "Oswald", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    margin-top: 5px;
+    color: #777;
+    width: 150px;
+    padding-left: 37px;
+    padding-top: 5px;
+    height: 25px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    text-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 3px rgba(0, 0, 0, 0.2) inset;
+    -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 3px rgba(0, 0, 0, 0.2) inset;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 3px rgba(0, 0, 0, 0.2) inset;
+    -webkit-transition: all 0.7s ease 0s;
+    -moz-transition: all 0.7s ease 0s;
+    -o-transition: all 0.7s ease 0s;
+    transition: all 0.7s ease 0s;
+    }
+
+#search input[type="text"]:focus {
+    width: 170px;
+    }
+
+.build-project-custom {
+  margin-right: 10px;
+  // float: left;
+}
+
+.projects-custom {
+
+}
+
+.widget-custom {
+  float: right;
+}
+
+.project-post-custom {
+  margin: 10px;
+}
+
+.project-row-custom {
+  margin: 10px;
+  text-align: center;
+}
+
+.float-custom-left {
+  float: left;
+  margin-right: 30px;
+}
+
+.float-custom-right {
+  float: right;
+  padding-top: 20px;
+}
+.inline-custom {
+  display: inline-block;
+}
+
+.technologies-custom {
+  padding: 10px;
+}
+
+.image-submit-custom {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.landing {
+  background-color: #FFFFFF;
+}
+
+#wellcome_message h1 {
+  margin-top: 50;
+}
+#wellcome_message h1 {
+  text-align: center;
+  padding: 50px;
+  background: rgb(249,202,63);
+
+}
+
+
+#wellcome_message {
+-webkit-animation-duration: 1.3s;
+-webkit-animation-delay:2s;
+-moz-animation-duration: 1.3s;
+-moz-animation-delay:2s;
+-ms-animation-duration: 1.3s;
+-ms-animation-delay:2s;
+-o-animation-duration: 1.3s;
+-o-animation-delay:2s;
+animation-delay:2s;
+animation-duration: 1.3s;
+
+opacity:0;
+
+}
+
+.landing h1 strong {
+  border-bottom: 5px solid;
+  color: #fff !important;
+}
+
+.landing strong {
+  color: #fff;
+}
+
+.project-title-custom {
+  text-align: left;
+}

@@ -23,10 +23,11 @@ class LabParser
   end
 
   def parse_readme(lab_dir)
-    readme_file = File.open(lab_dir + "/README.md")
+    readme_path = Dir[lab_dir + "/README*"].first
+    readme_file = File.open(readme_path)
     readme = MarkdownParser.render(readme_file.read)
     # now readme is a well-formatted string of normal html
-    yaml_readme = File.open(lab_dir + "/README.md")
+    yaml_readme = File.open(readme_path)
     url_file = File.open(lab_dir + "/url.txt")
     lab_attrs = {
       :readme => readme,

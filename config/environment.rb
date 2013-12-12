@@ -23,6 +23,7 @@ require_relative '../app/concerns/searchable'
 require_relative '../app/helpers/date_helper'
 require_relative '../app/helpers/require_helper'
 require_relative './initializers/redcarpet'
+require_relative './initializers/octokit'
 
 Dir.foreach(RootFolder) do |file|
   next if file.start_with?('.') || file.start_with?('curriculum')

@@ -1,0 +1,230 @@
+
+
+  <!-- main container .wide-content is used for this layout without sidebar :)  -->
+    
+        <div class="container-fluid">
+          <div class="row-fluid">
+
+            <div class="settings-wrapper" id="pad-wrapper">
+                <!-- avatar column -->
+                
+
+                <!-- edit form column -->
+                <div class="span9 personal-info">
+                    <div class="alert alert-info">
+                        <h4>
+                          
+                          <%= @user.full_name %>'s Application Status
+                        
+                      </h4>
+                      <br>
+                        <p>
+                         <strong>
+                            Current Position in Pipeline for 
+                            <%= @dossier.semester %>       
+                         </strong>
+                        </p> 
+
+                        <span class="label label-success">
+                              <%= @dossier.aasm_state.humanize %>
+                        </span>
+                    </div>
+                    <h5 class="personal-title">Application Content</h5>
+                    <br>
+
+                    <div class= 'row-fluid span12'> <!-- Dossier content -->
+                      
+                      <div>
+
+                        <div class="bio-item">
+                          <%= render 'shared/uncollapser_button' %>
+                          <strong>Your Career &amp; Ed.</strong>
+                          <div class="collapsible collapsed">
+                            <p><%= @dossier.career %></p>
+                          </div>
+                        </div>
+
+                        <hr>
+
+                        <div class="bio-item">
+                          <%= render 'shared/collapser_button' %>
+                          <strong>Your Purpose For Applying</strong>
+
+                          <div class="collapsible">
+
+                            <p><%= @dossier.purpose %></p>
+                          </div>
+                        </div>
+
+                        <hr>
+
+                        <div class="bio-item">
+
+
+                          <%= render 'shared/uncollapser_button' %>
+                          <strong>Your Past Coding Skills</strong>
+
+                          <div class="collapsible collapsed">
+                            <p><%= @dossier.code_skills %></p>
+                          </div>
+                        </div>
+
+                        <hr>
+
+                        <div class="bio-item">
+
+                          <%= render 'shared/uncollapser_button' %>
+                          <strong>Your Past Analytical Skills</strong>
+
+
+                          <div class="collapsible collapsed">
+                            <p><%= @dossier.analytic_skills %></p>
+                          </div>
+                        </div>
+
+                        <hr>
+
+                        <div class="bio-item">
+                          <%= render 'shared/uncollapser_button' %>
+                          <strong>Additional Tidbits</strong>
+                          <div class="collapsible collapsed">
+                            <p><%= @dossier.tidbits %></p>
+                          </div>
+                        </div>
+
+                        <hr>
+
+                      </div>
+                    </div>
+                </div>
+                
+
+
+<!-- Rightside -->
+                <div class="span3 avatar-box">
+                      <div class="personal-image ">
+                        <div class="alert alert-info">
+                        <%= image_tag ("http://www.gravatar.com/avatar/#{@avatar_hash}"),:class => "avatar img-circle"%>
+                        <br>
+                        <br>
+
+                        <p>
+                          Don't have an Avatar yet?
+                        </p>
+                        <p>
+                          Sign up for gravatar <%= link_to "here", "https://en.gravatar.com/"%>
+                        </p>
+                       
+
+                        
+                        <p>
+                          <% if can? :update, @dossier %>
+                            <%= link_to "Edit this dossier", edit_dossier_path(@dossier) %>
+                          <% end %>
+                        </p>
+
+                        <br>
+                        <br>
+
+
+                        <%= render "dossiers/application_status" %>
+                        </div>
+                      </div>
+                </div>
+          </div> <!-- Span fluid -->
+               
+
+          
+
+        </div>
+        <hr>
+
+
+<!-- if @response.response.code = "200" render code-->
+              <% if  @codeschool.response.code == "200" %> 
+                <div class="row-fluid">
+                  <h3>
+                    Code School Classes: <%= @codeschool.parsed_response["user"]["total_score"].html_safe %>
+                  </h3>
+                  
+                  <hr>
+
+                  
+                <div class="row-fluid img-box" > <!-- completed -->
+            
+                    <h3>Completed Code School Classes</h3>
+                    <%@codeschool.parsed_response["courses"]["completed"].each do |x| %>
+                    <div class=" row-fluid span12 img-box" style="width: 118px;float:left;">
+                      <%=link_to image_tag(x['badge']), x['url'] %>
+                    </div>
+                   
+                  
+                      <%end%>
+                      <%end%>   <br>
+                </div>
+                <hr>
+
+                <div class="row-fluid img-box" > <!-- in progress -->
+                                     
+                    <h3>In progress</h3>
+                    <%@codeschool.parsed_response["courses"]["in_progress"].each do |x| %>
+                    <div class=" row-fluid span12 img-box" style="width: 118px;float:left;">
+                      <%=link_to image_tag(x['badge']), x['url'] %>
+                    </div>
+                      <%end%>   <br>
+                </div>
+                <hr>
+              
+              
+
+
+
+
+              <div class ="row-fluid">
+
+
+
+                <!-- if @response.response.code = "200" render code-->
+                <% if  @treehouse.response.code == "200" %> 
+
+                <h3>Accrued Tree House Points </h3>
+                 <% @html = @treehouse.parsed_response["points"]["html"].to_i %>
+                 <% @css = @treehouse.parsed_response["points"]["css"].to_i %>
+                 <% @ruby = @treehouse.parsed_response["points"]["ruby"].to_i %>
+                 <% @javascript = @treehouse.parsed_response["points"]["javascript"].to_i %>
+                 <% @design = @treehouse.parsed_response["points"]["design"].to_i %>
+
+                
+              
+                
+
+
+
+               
+
+                  <p><% @dossier.aasm_state %></p>
+                  <% if can? :update, @dossier %>
+                    <p><%= link_to "Edit this dossier", edit_dossier_path(@dossier) %></p>
+                  <% end %>
+                <% end %>
+              </div>
+              
+
+            </div>
+        </div>
+        <div class="graphs" style>  
+          <div style="graph" data-html="<%= @html %>" data-css="<%= @css %>" data-ruby="<%= @ruby %>" data-javascript="<%= @javascript %>" data-design="<%= @design %>" id="donut-treehouse">
+          </div>
+        </div>
+    </div>
+    <!-- end main container -->
+
+    <!-- end of right side -->
+
+
+
+
+
+
+
+

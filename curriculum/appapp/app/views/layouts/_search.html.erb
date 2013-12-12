@@ -1,0 +1,5 @@
+<li class="hidden-phone">
+  <%= form_tag dashboard_path, :method => "get" do %>
+    <%= text_field_tag :search, params[:search], :class => "search" %>
+  <% end %>
+</li>

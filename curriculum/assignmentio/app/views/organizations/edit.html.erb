@@ -1,0 +1,17 @@
+<div class="span6">
+<%= form_tag edit_organization_path do |f|%>
+  <input type="text"  class="emails_assigned_from">
+  <button type="button" class="btn_email" data-toggle="button">Add email</button>
+  <div>
+  <span class="sbutton"><%= submit_tag "invite people", :id =>"submit_button" %></span>
+  <%= hidden_field_tag "emails","",class: "hidden_user_add" %>
+</div>
+<% end %>
+
+</div>
+<div class="span3">
+  <h2> invited: </h2>
+  <h5>Click on an email to remove from list</h5>
+    <ul class="students_invited">
+    </ul>
+</div>

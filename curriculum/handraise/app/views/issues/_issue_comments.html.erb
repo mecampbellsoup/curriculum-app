@@ -1,0 +1,16 @@
+<div class="issue-comments-container">
+  <!-- Issue.comments -->
+  <% if @issue.comments.count > 0 %>
+    <% @issue.comments.order("created_at ASC").each do |c| %>
+        <div class="issue-comment span5" id="issue-comment-<%= c.id %>">
+          <blockquote>
+            <p class="comment-content"><%= c.content %></p>
+            <small><cite title="Source Title"><%= c.user.username %>, submitted <%= time_ago_in_words(c.created_at) %> ago</cite></small>
+          </blockquote>
+        </div>
+      <% end %>
+
+  <% end %>
+  <!-- New Issue.comment Form -->
+  <%= render 'new_issue_comment' %>
+</div>

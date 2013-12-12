@@ -1,0 +1,39 @@
+<h4 id="notice"><%= notice %></h4>
+
+<div class="span8">
+  <div class="form-horizontal well">
+      <div class="bigger">
+          <div>
+        <b>Assignment:</b> <%=@user_assignment.assignment.name%> 
+          </div></br>
+
+
+       <div>
+        <b>Student Name:</b> <%= @user_assignment.user.name %></br>
+        </div></br>
+
+     <div>
+        <b>Due Date:</b> <%= @user_assignment.assignment.due_date%></br>
+      </div></br>
+
+       <div>
+        <b>Date Submitted:</b> <%=@user_assignment.submissions.last.created_at.strftime("%A, %b %e, %Y ")%></br>
+        </div></br>
+
+          <div>
+        <b>Comments:</b> <%=@user_assignment.submissions.last.content%></br>
+          </div></br>
+
+    <div>
+       <b>download link:</b> <%= file_submitted(@user_assignment.submissions.last) %></br>  
+    </div>
+
+    <div>
+        <%= render "submissions/feedback" %>
+   </div></br>
+    </div>
+  </div>
+</div>
+
+        
+  

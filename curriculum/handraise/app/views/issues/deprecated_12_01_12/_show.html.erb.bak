@@ -1,0 +1,108 @@
+<div class="issue-container well">
+  <div class="issue-body row">
+
+    <div class="issue-signature span2">
+     
+    </br>
+      <% if @issue.owner == current_user %>
+        <%= link_to 'Edit', edit_issue_path(@issue) %> |
+        <%= link_to 'Destroy', @issue, method: :delete, data: {confirm: 'Are you sure?'} %>
+      <% end %>
+      <h5>Status: <%= @issue.aasm_state %></h5>
+      <h5>Answer accepted from: <%= @answerer.username if @answerer %></h5>
+    </div>
+    <div class="issue-content span6">
+      <h3><%= @issue.title %></h3>
+      <%= markdown @issue.description %>
+      <p><em>Submitted <%= time_ago_in_words(@issue.created_at) %> ago by <%= @issue.user.username %></em></p>
+
+      <div class="btn btn-success row" id="issue-comments-toggle">
+        COMMENTS
+      </div>
+      <div class="issue-comments-container">
+        <!-- Issue.comments -->
+        <% if @issue.comments.count > 0 %>
+          <% @issue.comments.each do |c| %>
+            <div class="issue-comment row" id="issue-comment-<%= c.id %>">
+              <div class="comment-signature span2">
+                <p>
+                  <strong><%= c.user.username %></strong></br>
+                  <em><%= time_ago_in_words(c.created_at) %> ago</em>
+                </p>
+              </div>
+              <div class="comment-content span6">
+                <%= markdown c.content %>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+        <!-- New Issue.comment Form -->
+        <div class="new-issue-comment">
+          <h5>Submit a clarifying comment or question on the issue!</h5>
+          <%= form_for([@issue, @issue.comments.build]) do |f| %>
+            <%= f.text_area :content, rows: 3, :class => "field span6" %>
+            <%= f.submit "Submit", :class => "btn" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="issue-answers-container">
+  <% @issue.answers.each do |a| %>
+    <div class="issue-answer-container row well" id="issue-answer-<%= a.id %>">
+      <div class="issue-answer-body row">
+        <div class="answer-signature span2">
+          <h4><%= a.user.username %></h4>
+          <% if a.issue.is_owner?(current_user) %>
+            <%= form_for a.issue do |f| %>
+              <%= f.hidden_field :answer_id, :value => a.id %>
+              <%= f.submit "accept", :id => "button-issue", :class => "btn btn-mini btn-success" %>
+            <% end %>
+          <% end %>
+          Answer id:  <%= a.id %></br>
+          <span class="votes">(<%= a.total_votes %>)</span>
+          <% unless a.user == current_user  %>
+            |<%= link_to vote_issue_answer_path(@issue, a, vote: 'up'), method: "post", :remote => true do %><i class="icon-thumbs-up"></i><% end %>|
+            <%= link_to vote_issue_answer_path(@issue, a, vote: 'down'), method: "post", :remote => true do %><i class="icon-thumbs-down"></i><% end %>|
+          <% end %>
+        </div>
+        <div class="answer-content span6">
+          <p><%= markdown a.content %></p>
+          <div class="answer-comments-toggle btn row" id="answer-<%= a.id %>-comments-toggle">
+          comments
+          </div>
+          <div class="answer-comments-container row" id="answer-<%= a.id %>-comments">
+            <% if a.comments.count > 0 %>
+              <% a.comments.each do |c| %>
+                <div class="answer-comment row" id="answer-comments-<%= c.id %>">
+                  <div class="comment-signature span2">
+                    <p>
+                      <strong><%= c.user.username %></strong></br>
+                      <em><%= time_ago_in_words(c.created_at) %> ago</em>
+                    </p>
+                  </div>
+                  <div class="comment-content span4">
+                    <%= markdown c.content %>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+            <div class="new-answer-comment">
+              <h5>Submit a comment on this answer!</h5>
+              <%= render 'comments/form_comment', :parent => a %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <div class="new-issue-answer span7 pull-right">
+  <!-- New Issue.answer Form -->
+    <h5>Submit an answer!</h5>
+    <%= form_for([@issue, @answer]) do |f| %>
+      <%= f.text_area :content, rows: 5, :class => "field span7" %>
+      <%= f.submit "Submit", :class => "btn btn-mini" %>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+<%= form_for([@project, @feature]) do |f| %>
+  <% if @feature.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@feature.errors.count, "error") %> prohibited this feature from being saved:</h2>
+
+      <ul>
+      <% @feature.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <fieldset>
+    <%= render partial: 'features/edit_form_partials/info', :locals => {:f => f, :feature => @feature}%>
+
+    <ul id="sortable2" class="sortable grid">
+    <% @feature.slides_in_order.each do |slide| %>
+         <li draggable="true" class="" style="display: list-item;">
+         <input type="hidden" name="slides[][class]" value="<%= slide.class %>"></input>
+         <input type="hidden" name="slides[][id]" value="<%= slide.id %>"></input>
+         <p><%= slide.name %></p>
+         <p><%= slide.description%></p>
+          <p><%= snippet_or_upload_show(slide) %></p>
+          </li>
+        <% end %>
+    </ul>
+
+    <%= render partial: 'features/edit_form_partials/technologies', :locals => {:f => f, :feature => @feature}%>
+
+    <div >
+      <%= f.submit %>
+    </div>
+  </fieldset>
+<% end %>

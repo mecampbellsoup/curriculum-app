@@ -1,6 +1,6 @@
 #!/bin/sh
 
-curl -u "mecampbellsoup:$1" https://api.github.com/user/repos -d "{\"name\":\"$2\"}";
+curl -u "flatiron-school:$1" https://api.github.com/user/repos -d "{\"name\":\"$2\"}";
 cp -r $3 $3/../$2;
 cd "curriculum/$2";
 pwd;

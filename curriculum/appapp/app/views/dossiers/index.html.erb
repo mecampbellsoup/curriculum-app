@@ -1,0 +1,26 @@
+<div class="row-fluid header">
+  <h3>Dossiers Index</h3>
+  <div class="span10 pull-right">
+    <%= render "dossier_search" %>
+  </div>
+</div>
+
+<h3><%= @dossiers.count %> Dossiers</h3>
+
+<div class="row-fluid table">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <%= render "table_header_dynamic_sort", :link_name   => "Name", :link_path => dossiers_path(:sort_by => "user") %>
+        <%= render "table_header_dynamic_sort", :link_name   => "Status", :link_path => dossiers_path(:sort_by => "aasm_state") %>
+        <%= render "table_header_static_sort",  :header_name => "Status History" %>
+        <%= render "table_header_static_sort",  :header_name => "Change Status"  %>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= render "dossier_index_table_details", :dossiers => @dossiers %>
+    </tbody>
+
+  </table>
+</div>

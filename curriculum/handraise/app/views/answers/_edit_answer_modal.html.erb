@@ -1,0 +1,10 @@
+<div id="myModalEditAnswer" class="modal hide fade" tabindex="1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      <h3 id="myModalEditAnswerLabel">Edit Your Answer</h3>
+  </div>
+  <div class="modal-body">
+    <%#= @answer.inspect %>
+    <%= render 'answers/form' %>
+  </div>
+</div>

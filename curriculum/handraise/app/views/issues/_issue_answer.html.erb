@@ -1,0 +1,29 @@
+<div class="issue-answer-container row" id="issue-answer-<%= a.id %>">
+  
+  <% if a.id == a.issue.answer_id %>
+    <div class="accepted-answer-body">
+      <%= render 'issue_body', :a => a %>
+    </div>
+  <% else %>
+    <%= render 'issue_body', :a => a %>
+  <% end %>
+    
+    <div class="row offset2">
+      <div class="answer-comments-container row" id="answer-<%= a.id %>-comments">
+        <% if a.comments.count > 0 %>
+          <% a.comments.each do |c| %>
+            <blockquote>
+              <div class="comment-content"><%= markdown c.content %></p>
+              <small><cite title="Source Title"><%= c.user.username %>, submitted <%= time_ago_in_words(c.created_at) %> ago</cite></small>
+            </blockquote>
+          <% end %>
+        <% end %>
+        <div class="new-answer-comment">
+          <%= render 'comments/form_comment', :parent => a %>
+        </div>
+        <div class="answer-comments-toggle-li btn-link" id="answer-<%= a.id %>-comments-toggle">Add Comment
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

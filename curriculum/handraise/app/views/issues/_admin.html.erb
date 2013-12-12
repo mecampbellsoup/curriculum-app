@@ -1,0 +1,6 @@
+<div id="admin">
+  <%= form_for @issue do |f| %>
+    <%= f.hidden_field :created_at, :value => @issue.created_at - 23.minutes %>
+    <%= f.submit "Move along by 23 minutes" %>
+  <% end %>
+</div>

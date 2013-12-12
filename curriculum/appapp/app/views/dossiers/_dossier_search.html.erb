@@ -1,0 +1,12 @@
+<%= form_tag dossiers_path, :method => "get" do %>
+  <%= text_field_tag "name", params[:name], :placeholder => "Search by Applicant name", :class => "span3 search" %>
+  <%= text_field_tag "hashtag", params[:hashtag], :placeholder => "Search by hashtag", :class => "span3 search" %>
+  <select name="status" id="status" class="span3">
+    <option value="">Search by status</option>
+    <% @statuses.each do |status| %>
+      <option value="<%= status %>" <%= "selected" if params[:status] == status %>><%= status.humanize %></option>
+    <% end %>
+  </select>
+  <%= hidden_field_tag "sort_by", params[:sort_by], :id => "dossier_sort_by" %>
+  <%= submit_tag :search, :class => "btn btn-flat white", :id => "dossier_search" %>
+<% end %>

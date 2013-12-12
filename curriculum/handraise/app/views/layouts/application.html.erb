@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Handrai.se</title>
+  <%= stylesheet_link_tag "application" , :media => "all" %>
+  <%= csrf_meta_tags %>
+  <link href="http://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+</head>
+
+
+
+<body style="overflow: hidden">
+  <% unless @organizations %>
+    <%= render 'issues/navbar' %>
+  <% end %>
+  <div class="page-container">
+    <%= yield %>
+    <%= render 'issues/new_issue_modal' %>
+  </div>
+
+  <!-- Javascript -->
+  <%= javascript_include_tag "application" %>
+  <%= yield :js %>
+
+  <script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-33578770-4']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-  analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+  </script>
+</body>
+</html>

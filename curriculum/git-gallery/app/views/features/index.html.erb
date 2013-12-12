@@ -1,0 +1,30 @@
+<h1><%= @user.name %>'s Portfolio</h1>
+<div>
+  <ul>
+    <% @user.projects.uniq.each do |project| %>
+    <li>
+      <h4><%= project.name %></h4>
+      <table>
+        <thead>
+          <th width="200">Title</th>
+          <th width="750" colspan="3">Description</th>
+        </thead>
+          <% project.this_user_features(@user).each do |feature| %>
+          <tr>
+            <td><%= link_to "#{feature.title}", feature %></td>
+            <td width="600"><%= feature.description %></td>
+            <td><%= link_to 'Edit', edit_feature_path(feature) %></td>
+            <td><%= link_to 'Destroy', feature , method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+          <% end %>
+      </table>
+    </li>
+    <% end %>
+  </ul>
+</div>
+
+<%= link_to 'Edit', edit_user_path(@user) if current_user == @user %> 
+
+
+      
+

@@ -1,0 +1,16 @@
+<% if !logged_in? %>
+  <a href="#" class="top-sign-in">Sign In / Sign Up</a>
+  <div class="login-box"><br>
+    <% if current_user %>
+      <%= link_to "Sign out", signout_path %>
+    <% else %>
+      <i class="icon-github">
+        <br><%= link_to "Sign up with Github!", "/auth/github" %>
+      </i><br><br>
+      <p><em>(If you don't have a GitHub account, kindly GTFO)</em></p>
+      <br><%= link_to "Already a member? Click here", "/auth/github" %>
+    <% end %>
+  </div>
+<% else %>
+  <%= link_to "Logout", logout_path, class: 'top-sign-in'%>
+<% end %>

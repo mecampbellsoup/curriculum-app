@@ -1,0 +1,44 @@
+<h4 id="notice"><%=notice%></h4>
+<%= form_for @user do |f| %>
+  <% if @user.errors.any? %>
+    <div class="error_messages">
+      <h2>Form is invalid</h2>
+      <ul>
+        <% for message in @user.errors.full_messages %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div>
+      <h4>Your Custom API Key is:  <%=@user.authentication_token%></h3>
+  </div>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  
+  <div class="field">
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </div>
+
+    <a href="#" id="change_password">Change Password</a>
+    <div id="passwords"  style="display: none">
+
+    <div class="field">
+      <%= f.label :password %>
+      <%= f.password_field :password, :autocomplete => nil, :value => "" %>
+    </div>
+    <div class="field">
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation, :autocomplete => nil, :value => "" %>
+    </div>
+
+
+  </div>
+
+  <div class="actions"><%= f.submit %></div>
+<% end %>

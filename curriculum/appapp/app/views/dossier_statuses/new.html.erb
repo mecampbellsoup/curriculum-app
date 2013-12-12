@@ -1,0 +1,7 @@
+<h1>Status History for <%= @user.full_name %>'s Application</h1>
+
+<ul>
+  <% @dossier.dossier_statuses.each do |status| %>
+    <li>Marked as <em><%= status.status.humanize.downcase %></em> on <%= status.created_at.strftime("%A, %b %d at %I:%M %p") %></li>
+  <% end %>
+</ul>

@@ -1,0 +1,14 @@
+<div class="signature-icon-resolved">
+Resolved
+</div>
+
+<% if @issue.is_owner?(current_user) || current_user.is_instructor %>
+  <div class="pull-right issue-status-change">Change Status <i class="icon-chevron-down icon-large"></i></div>
+
+  <div class="open-button">
+    <%= form_tag("/issues/#{@issue.id}/change_status",:method => :put ) do %>
+      <input name="state" type="hidden" value="open">
+      <%= submit_tag "Open", class:'btn btn-mini btn-warning pull-right change-status' %>
+    <% end %>
+  </div>
+<% end %>

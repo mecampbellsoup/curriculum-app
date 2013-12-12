@@ -1,0 +1,47 @@
+<h4 id = "notice"><%= notice %></h4>
+
+<% if !@groups.empty? || @created_groups.empty? %>
+  <div class="span6">
+    <h1>groups i belong to</h1>
+  </div>
+<% end %>
+<div class="span5">
+  <h1><%= link_to 'create a new group', new_group_path %></h1>
+</div>
+<% if !@groups.empty? || @created_groups.empty? %>
+    <table class="table table-striped">
+      <tr>
+	<th>Group Name</th>
+	<th></th>
+      </tr>
+      <% @groups.each do |group| %>
+	<tr>
+	  <td><%= link_to group.name, group %></td>
+	  <td></td>
+	</tr>
+      <% end %>
+    </table>
+<% end %>
+
+
+<% if @created_groups != [] %>
+  <div class="span6">
+    <h1>groups created by me</h1>
+  </div>
+  <table class="table table-striped">
+    <tr>
+      <th>Group Name</th>
+      <th>Group Size</th>
+      <th></th>
+      <th></th>
+    </tr>
+    <% @created_groups.each do |group| %>
+      <tr>
+	<td><%= link_to group.name, group %></td>
+  <td><%= group.users.count %></td>
+	<td><%= link_to 'Add/Remove Students', edit_group_path(group) %></td>
+	<td><%= link_to 'Remove Group', group, method: :delete, data: { confirm: 'This will remove all users from this group. Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>

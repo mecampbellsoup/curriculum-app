@@ -1,0 +1,16 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h4>Hi <%= @instructor.username %>,</h1>
+    <p>
+      <%= @issue_creator.username %> needs your help resolving an issue on Handrai.se! You can view the link here <%= issue_url(@issue, :host => "www.handrai.se") %>
+    </p>
+    <p><span>Sincerely,</span><br/>
+      <span>Your friends at Handrai.se</span>
+    </p>
+  </body>
+</html>

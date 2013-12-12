@@ -8,10 +8,6 @@
 class LabCloner
   attr_reader :urls
 
-  def check_lab_for_readme_with_yaml(repo_url)
-    
-  end
-
   def initialize(*urls)
     # need to pass multiple strings comma separated
     @urls = urls
@@ -20,8 +16,13 @@ class LabCloner
   def call
     # looping through urls + git cloning magic here
     self.urls.each do |url|
+      if !File.exists?(File.join(RootFolder, '/curriculum'))
+        Dir.mkdir(File.join(RootFolder, '/curriculum'))
+      end
       Dir.chdir(File.join(RootFolder, '/curriculum'))
-      name = url.match(/\/([a-zA-Z-]*)(?=-ruby\b-\d{3})/)[1]
+
+      # name = url.match(/\/([a-zA-Z-]*)(?=-ruby\b-\d{3})/)[1]
+      name = url.match(/\/([a-zA-Z-]*)/)[1]
       if !Dir.glob(File.basename(File.join(Dir.pwd,"*"))).include?(name)
         system("git clone #{url} #{name}")
         system("rm -rf #{name}/.git")

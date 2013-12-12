@@ -1,0 +1,37 @@
+<%= form_for(@artist) do |f| %>
+  <b>Artist:</b>
+  <br>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <label>Year Of Birth:</label>
+    <input name="artist_year_of_birth">
+  </div>
+
+  <div class="field">
+    <b>Song:</b>
+    <br>
+    <label>Name</label>
+    <input name='song[name][]'>
+  <div>
+
+  <div class="field">
+    <b>Song:</b>
+    <br/>
+    <label>Name</label>
+    <input name='song[name][]'>
+  <div>
+
+  <div class="field">
+    <b>Song:</b>
+    <br>
+    <label>Name</label>
+    <input name='song[name][]'>
+  <div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

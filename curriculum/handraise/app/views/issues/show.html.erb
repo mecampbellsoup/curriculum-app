@@ -1,0 +1,31 @@
+<!-- <p id="notice"><%#= notice %></p> -->
+<%= render 'admin' %>
+
+<div class="issues-nav">
+</div>
+
+<div class="issue-content">
+</div>
+
+<%= content_for :js do %>
+  <script>
+    $(function(){
+      $(".issues-nav").load("<%= issues_path %>", function(html){
+        ActivateIssuesIndex();
+        $("#issue_<%= @issue.id%>").addClass("")
+        // $("table.unresolved tr:first td a:first").click();
+      });
+
+      function pollIssuesIndex(){
+        setTimeout(function(){
+          $(".issues-nav").load("<%= issues_path %>", function(html){
+            ActivateIssuesIndex();
+            pollIssuesIndex();      
+          })
+        }, 5000)
+      }
+      pollIssuesIndex();
+
+    });
+  </script>
+<% end %>

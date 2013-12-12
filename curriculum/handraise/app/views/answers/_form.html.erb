@@ -1,0 +1,6 @@
+
+
+<%= form_for([@issue, @answer]) do |f| %>
+  <%= f.text_area :content, rows: 5, :class => "field span8" %></br>
+  <%= f.submit "Submit", :class => "btn" %>
+<% end %>

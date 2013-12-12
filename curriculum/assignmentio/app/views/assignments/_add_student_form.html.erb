@@ -1,0 +1,85 @@
+
+
+<div class="span5 accordian_group">
+  <div class="accordion" id="accordion2">
+    <div class="accordion-group">
+      <div class="accordion-heading">
+       <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href= "#collapseOne"> <h3>add people by name or email</h3></a>
+      </div>
+      <div id="collapseOne" class="accordion-body collapse">
+        <div class="accordion-inner"> 
+	  <p><i>Press enter to add to list</i></p>
+          <input type="text" class="student_names name_autocomplete" >
+        </div>
+      </div>
+    </div>
+    <div class="accordion-group">
+      <div class="accordion-heading">
+	<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href= "#collapseTwo"><h3> invite new people by email</h3></a>
+      </div>
+      <div id="collapseTwo" class="accordion-body collapse">
+        <div class="accordion-inner"> 
+	  <p><i>Press enter to add to list</i></p>
+          <input type="text"  class="emails_assigned_from">
+	  <button type="button" class="btn_email hidden" data-toggle="button">Add email</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion-group">
+      <div class="accordion-heading">
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href= "#collapseThree"> <h3>add by groups</h3></a>
+      </div>
+      <div id="collapseThree" class="accordion-body collapse">
+        <div class="accordion-inner"> 
+	<p><i>Press enter to add to list</i></p>
+         <select data-placeholder="Select a group" id="group_names" multiple="multiple" tabindex="3">
+            <% @groups_list.order(:name).each do |group| %>
+              <option value="<%= group.name%>"><%= group.name %></option>
+            <%end%>
+          </select>
+          <input type="text" class="hidden">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="span6">
+  <span class="sbutton"><%= f.submit  :id=>"submit_button" %></span>
+  <%= f.hidden_field :user_names, "class"=>"hidden_user_add" %>
+<% if !f.object.is_a?(Group) %>
+  <div class="actions">
+    <label id="add_student_label"> Add assigned people to a group</label>
+    <label id="group_name_label" style="display:none">Group Name:</label>
+    <input type="checkbox" id="group_field" name="checkbox">
+    <input id="assignment_group_name" type="text" name ="group_name" style="display:none" >
+  </div>
+<% end %>
+  
+</div>
+<div class="span3 assigned_list">
+  <h2> assigned: </h2>
+  <h5>Click on a name to remove from list</h5>
+  <ul class = "students_added">
+    <% if @users_already_added != [] %>
+      <% @users_already_added.each do |user| %>
+        <li class='added_student'><%= user.name %></li>
+      <% end %>
+    <%end %>
+  </ul>
+</div>
+<div class="span3">
+  <h2> invited: </h2>
+  <h5>Click on an email to remove from list</h5>
+    <ul class="students_invited">
+      <% if @users_already_invited != [] %>
+      <% @users_already_invited.each do |user| %>
+        <li><%= user.email if !user.registered %></li>
+      <% end %>
+    <%end %>
+    </ul>
+</div>
+<script>
+  var groups_students = JSON.parse('<%=raw @groups.to_json%>')
+</script>

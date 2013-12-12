@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @race.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @race.description %>
+</p>
+
+<p>
+  <b>Horses:</b>
+  <ul>
+    <%= @race.horses.each do |horse| %>
+      <li>Position: <%= horse.position %> | Name: <%= horse.name %> | Number: <%= horse.number %></li>
+    <% end %>
+  </ul>
+</p>
+
+<p>
+  <b>Jockeys:</b>
+  <ul>
+    <%= @race.jockeys.each do |jockey| %>
+      <li>Name: <%= jockey.name %> | height: <%= jockey.height %> | <%= jockey.shoe_size %></li>
+    <% end %>
+  </ul>
+</p>

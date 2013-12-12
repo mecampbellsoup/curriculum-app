@@ -1,0 +1,13 @@
+$("div.issue-show-container").html("<%= render_escaped 'show' %>")
+ActivateIssueShow();
+document.title = "<%= escape_javascript("Handrai.se - Issue ##{@issue.id} - #{truncate(@issue.title, length: 50)}") %>"
+
+// $(function(){
+//   $("tr").click(function(){
+//     $("tr.selected").removeClass("selected");
+//     $(this).addClass("selected");
+//   })
+// })
+
+
+

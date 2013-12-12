@@ -1,0 +1,32 @@
+
+<h2>Listing issues <%= link_to 'New Issue', new_issue_path, class:"btn btn-mini btn-success"%></h2>
+
+<div class="tabbable">
+  <ul class="nav nav-tabs">
+    <li><a href="#" data-toggle="tab">All Issues</a></li>
+    <li><a href="#fresh" data-toggle="tab">Fresh</a></li>
+    <li><a href="#open" data-toggle="tab">Open</a></li>
+    <li class="active"><a href="#instructor" data-toggle="tab">Instructor Needed</a></li>
+    <li><a href="#resolved" data-toggle="tab">Resolved</a></li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-panel" id="all">
+      <%= render 'issues_table', :issues => @issues %>
+    </div>
+    <div class="tab-pane" id="fresh">
+      <%= render 'issues_table', :issues => Issue.where(aasm_state:'fresh') %>
+    </div>
+    <div class="tab-pane" id="open">
+      <%= render 'issues_table', :issues => Issue.where(aasm_state:'opened') %>
+    </div>
+    <div class="tab-pane" id="instructor">
+      <%= render 'issues_table', :issues => Issue.where(aasm_state:'instructor_asked') %>
+    </div>
+    <div class="tab-pane" id="resolved">
+      <%= render 'issues_table', :issues => Issue.where(aasm_state:'resolved') %>
+    </div>
+  </div>
+</div>
+
+
+

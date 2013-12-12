@@ -1,0 +1,46 @@
+<span class="pull-right">Sort by: <a href="#" id="trigger-link-date">Date, </a><a href="#" id="trigger-link-votes" class="trigger-link-on">Votes</a><br><br></span>
+
+<table class="table table-striped" id="issues">
+  <thead>
+    <tr>
+      <th>Info</th>
+      <th>Description</th>
+      <th>Stats</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% issues.each do |issue| %>
+      <tr id="issue-<%= issue.id %>">
+        <td class="span3">
+          <span class="hidden"><%=issue.created_at %></span>
+          <strong><%= link_to issue.title, issue_path(issue) %></strong>
+          <p><em>submitted <%= time_ago_in_words(issue.created_at) %> ago by <%= issue.owner.username %></em></p>
+        </td>
+        <td class="span6"><%= link_to issue.description, issue_path(issue) %></td>
+        <td class="span3">
+          <span class="hidden"><%=issue.total_votes %></span>
+          <p>
+            <span class="votes">(<%= issue.total_votes %>)</span> votes
+              <% unless issue.owner == current_user  %>
+                |<%= link_to "up", vote_issue_path(issue, vote: 'up'), method: "post", :remote => true %>|
+                <%= link_to "down", vote_issue_path(issue, vote: 'down'), method: "post", :remote => true %>|
+              <% end %>
+          </p>
+          <p>
+            <em><%= pluralize(issue.answers.count, 'answer') %> submitted</em>
+            <% if issue.answer_id.nil? %>
+              <p>(none accepted)</p>
+            <% else %>
+              <p>answered by <%= Answer.find(issue.answer_id).owner.username %></p>
+            <% end %>
+          </p>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+
+

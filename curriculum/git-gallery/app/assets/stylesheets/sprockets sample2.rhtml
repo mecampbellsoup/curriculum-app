@@ -1,0 +1,97 @@
+
+//= require ../../../vendor/assets/theme/js/bootstrap
+//= require ../../../vendor/assets/theme/js/lightbox
+//= require ../../../vendor/assets/theme/js/prettify
+//= require ../../../vendor/assets/theme/js/main
+//= require ../../../vendor/assets/chosen/chosen.jquery.min
+//= require ../../../vendor/assets/masonry/masonry.pkgd.min
+//= require ../../../vendor/assets/javascripts/jquery-ui-sortable
+//= require ../../../vendor/assets/javascripts/jquery-1.10.1.min.js
+//= require ../../../vendor/assets/javascripts/jquery-migrate-1.2.1.min.js
+//= require ../../../vendor/assets/javascripts/jquery.ba-bbq.min.js
+//= require ../../../vendor/assets/javascripts/jquery.form.min.js
+//= require ../../../vendor/assets/javascripts/jquery.isotope.min.js
+//= require ../../../vendor/assets/javascripts/jquery.placeholder.min.js
+//= require ../../../vendor/assets/javascripts/jquery.validate.min.js
+//= require ../../../vendor/assets/javascripts/addition
+//= require ../../../vendor/assets/theme/js/jquery-1.10.1.min
+//= require update_slide_order
+//= require best_in_place
+//= require rails.validations
+//= require_tree .
+
+
+ *
+ *= require_self
+ *= require ../../../vendor/assets/chosen/chosen.min
+ *= require ../../../vendor/assets/theme/css/main
+ *= require ../../../vendor/assets/theme/css/theme_venera_blue_custom
+ *= require /projects
+ *= require_tree .
+
+ *= require custom
+ 
+
+<%= link_to @project.name, @project.repo.html_url, :target => "_blank" %>
+<section class="section-wrapper stripped">
+<div class="container">
+<div class="row">
+<div class="span12">
+<h3 class="section-header">Projects</h3>
+
+</div>
+<% @projects.each do |project| %>
+      <div class="span4">
+      <div class="white-card recent-post clearfix">
+      <h5 class="recent-post-header">
+         <a href="<%= project_path(project)%>"><%= project.name %></a>
+      </h5>
+      <div class="post-info clearfix">
+      </div>
+<%= project_image(project) %>
+  
+  <p class="post-content separated"><%= project.description %></p>
+      <div class="technologies-custom">
+    <% project.technologies.each do |tech| %>
+    <span class="label"><%=tech.name%></span>
+    <% end %>
+  </div>
+      </div>
+      </div>
+<%end %>
+</div>
+</div>
+</section>
+<% @projects.each do |project| %> 
+   <% @technologies_css = [] %>
+   <% @technologies_css << "all" %>
+<% @technologies_css << "isotope-item" %>|
+   <% project.technologies.each do |tech| %>
+
+<% @technologies_css << tech.name %>
+
+   
+   
+
+
+
+        <li class=<%= @technologies_css.join(' ')%> style="position: absolute; left: 0px; top: 0px; -webkit-transform: translate3d(0px, 99px, 0px);">
+   <% end %>|
+        
+          <a href="#page=portfolio&amp;id=1">
+            <figure>
+              <img src="http://octodex.github.com/images/twenty-percent-cooler-octocat.png" data-src="demo/portfolio/1/thumb.jpg" alt="" class="small">
+           <!--    <div class="span4">
+                  <%= project_image(project) %>
+              </div> -->
+             
+              <figcaption>
+
+                <h3><%= project.name %></h3>
+                <p><%= project.description.truncate(240) %></p></p>         
+              </figcaption>
+            </figure>
+          </a>
+         
+        </li>
+         <% end %>

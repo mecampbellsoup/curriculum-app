@@ -1,0 +1,169 @@
+<meta name="viewport" content="width=device-width">
+<!-- proof of pudding: the course -->
+<h1 style="text-align:center;"><%= @course.semester %></h1>
+
+
+<!-- Show all courses -->
+<div class="course-select">
+  <div class="btn-group float-right">
+    <% @courses.each do |course| %>
+      <%= link_to course.semester, course_path(course), :class=> "btn btn-flat info" %>
+    <% end %>
+  </div>
+
+  <h4 class="float-right h4-float" style="display: inline; margin-top: 3px; margin-right:14px;">Select a Course:</h4>
+</div>
+
+<!-- class stats view -->
+<hr class="clear-both">
+<%= render 'courses/collapser_course_button' %>
+<div class="class-stats collapsible">
+  <div class="graph-set">
+    
+    <h3>Student Count By:</h3>
+
+    <div class="graphs">
+
+      <div style="graph" id="donut-example" data-gender="<%= @gender %>">
+      </div>
+      <h5 style="center-text" class="graph-subheader">Gender</h5>
+    </div>
+    
+    <div class="graphs">
+      <div style="graph" id="donut-passion" data-passion="<%= @passion %>">
+      </div>
+      <h5 style="center-text" class="graph-subheader">Passion</h5>
+    </div>
+
+    <div class="graphs">
+      <div style="graph" data-tech="<%= @tech %>" id="donut-tech">
+      </div>
+      <h5 style="center-text" class="graph-subheader">Tech-Savviness</h5>
+    </div>
+    
+    <div class="graphs">
+      <div style="graph" data-leadership="<%= @leadership %>" id="donut-leadership">
+      </div>
+      <h5 style="center-text" class="graph-subheader">Leadership</h5>
+    </div>
+
+  </div>
+</div>
+
+<!-- filter by search status view -->
+<hr>
+<%= form_tag course_path(@course), :method => "get", :style=> "text-align:center;" do %>
+  <%= text_field_tag "hashtag", params[:hashtag], :placeholder => "Filter by hashtag", :class => "span3 search" %>
+  <!-- @course.id MUST equal its position in the index -->
+  <%= submit_tag :Filter, :class => "btn btn-flat white" %>
+<% end %>
+<hr>
+
+<!-- the needs decision view -->
+<div class="needs_decision column">
+  <h2 style="text-align:center; padding-bottom: 12px;">Applicants who Need a Decision</h2>
+  <div class="row-fluid table">
+    <table class="table table-hover">
+
+      <% @dossiers.each do |dossier| %>
+        <tbody class="tbody-border">
+
+          <tr>
+            <!-- column 1 -->
+            <td class="quarter-width">
+              <span class="label label-info"><%= dossier.aasm_state %></span><h3 style="display:inline-block; padding-left:0; margin-left:0;"><%= dossier.user.full_name %></h3>
+            </td>
+
+            <!-- column 2 -->
+            <td class="quarter-width">
+              <a class = "btn-flat default icon-heart-empty fancybox" data-href="<%= interview_show_path(dossier.id, :layout => "false") %>" href="#">
+                See App
+                <i class=""></i>
+              </a>
+            </td>
+
+
+
+<!-- replace the below with the right select box button. -->
+            <!-- column 3 -->
+            <td class="quarter-width">
+
+              <div class="btn-group">
+                <button class="btn-flat inverse icon-thumbs-down"><i class="icon-thumbs-up"></i></button>
+                <button class="btn glow dropdown-toggle" data-toggle="dropdown">
+                  <span class="caret"></span>
+                </button>
+                  <ul class="dropdown-menu">
+                    <% dossier.aasm.events.each do |admin_action| %>
+                      <li>
+                        <%= link_to admin_action.to_s.humanize, transition_path(dossier, admin_action), method: :put, data: {confirm: 'Are you sure?'} %>
+                      </li>
+                      <li><%= link_to "Reject", transition_path(dossier, :reject), method: :put, data: { confirm: 'Are you sure?' } %>
+                      </li>
+                      <li><%= link_to "Accept", transition_path(dossier, :accept), method: :put, data: { confirm: 'Are you sure?' } %>
+                      </li>
+                    <% end %>
+                  </ul>
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <!-- Row 2 Bellow: Hash Tags, double width -->
+            <td class="quarter-width" colspan="3">
+              <% dossier.hashtags.each do |hashtag| %>
+                <%= hashtag.content %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+
+
+<div class="current_class column pull-right">
+  <h2 style="text-align: center; padding-bottom:12px;">Accepted Students</h2>
+  <% @confirmed.each do |dossier| %>
+  <div class="one_student" style="width:420px; height:165px; border:2px solid #0BE339; display:inline-block;">
+    <div class="row-fluid table">
+      <table class="table table-hover">
+        <tbody>  
+          <tr>
+            <td style="width:50%; margin: 0 auto; display:block;">
+              <%= image_tag ("http://www.gravatar.com/avatar/#{dossier.user.gravatar_id}") %>
+            </td>
+            
+            <td style="width:50%;">
+              <!-- status -->
+              <div class="label label-info" style="display:block; width:77%; margin: 15px auto; text-align:center;"><%= dossier.aasm_state %></div>
+
+              <!-- see app -->
+              <a class="btn-flat default icon-heart-empty fancybox" data-href="<%= dossier_path(dossier.id, :layout => "false") %>" href="#" style="display:block; width:65%; margin: 0 auto; text-align: center;">
+                See App
+              </a>
+
+            </td>
+
+          </tr>
+
+          <tr>
+            <td colspan="2">
+              <% dossier.hashtags.each do |hashtag| %>
+                <%= hashtag.content %>
+              <% end %>
+            </td>
+          </tr>
+
+        </tbody> 
+      </table>
+    </div>
+  </div>
+  <% end %>
+
+</div>
+<div style="height:3500px;">
+</div>

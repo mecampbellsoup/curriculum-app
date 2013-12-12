@@ -1,0 +1,28 @@
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle hidden-phone" data-toggle="dropdown">
+    <%= current_user.full_name %>
+    <b class="caret"></b>
+  </a>
+  <ul class="dropdown-menu">
+    <% if current_user.applicant? %>
+      <% current_user.dossiers.each do |dossier| %>
+        <li>
+          <%= link_to "#{dossier.semester} application", dossier_path(dossier) %>
+        </li>
+      <% end %>
+      <li>
+        <%= link_to "New Dossier", new_dossier_path %>
+      </li>
+    <% end %>
+
+    <% if current_user.admin? %>
+      <li>
+        <%= link_to "Create New Course", new_course_path %>
+      </li>
+    <% end %>
+
+    <li>
+      <%= link_to "Log Out", logout_path %>
+    </li>
+  </ul>
+</li>

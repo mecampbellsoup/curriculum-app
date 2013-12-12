@@ -1,0 +1,102 @@
+<% if flash[:notice] %> 
+  <div class='alert alert-success'>
+    <button type="button" class="close" data-dismiss="alert">×</button>
+    <%= flash[:notice] %>
+  </div>
+<% elsif flash[:error] %>
+  <div class='alert alert-error'>
+    <button type="button" class="close" data-dismiss="alert">×</button>
+    <%= flash[:error] %>
+  </div>
+<% end %>
+
+
+<div class="hero-unit">
+  <h1>Gitbo</h1>
+  <h3>Get paid to fix the most asked for Github issues</h3>
+
+<div class="row-fluid">
+  <div class="row">
+    <div class="span4 btn">
+      <div id="themeIcon1" class='help'>
+        <%= link_to image_tag("help.png"), issues_path %>
+      </div>
+      <div class="step_writeup">
+        <h2 class="webfront">Request an Issue Patch</h2>
+        <p> Have a pressing issue? List it here</p>
+      </div>
+    </div>
+    <div class="span4 btn">
+      <div id="themeIcon1" class='help'>
+        <%= link_to image_tag("glass.png"), issues_path %>
+      </div>
+      <div class="step_writeup">
+        <h2 class="webfront">Explore and Fix Issues</h2>
+        <p> Find pressing open source issues</p>
+      </div>
+    </div>
+    <div class="span4 btn">
+      <div id="themeIcon1">
+        <%= link_to image_tag("moneyman.png"), issues_path %>
+      </div>
+      <div class="step_writeup">
+        <h2 class="webfront">Be a Hero & Earn Money</h2>
+        <p>Fix issues; make cash, get coder cred</p>
+      </div>
+    </div>
+  </div>
+</div> <!-- end class hero unit -->
+</div>
+
+<!-- <div class='jumbotron'>
+   <h1>Gitbo</h1>
+   <p class='lead'>Get paid to fix the most asked for Github issues</p> 
+</div> -->
+
+<div class='row'>
+  <div class='span6'>
+    <h3>Trending issues</h3>
+    <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Issue</th>
+            <th>Repo</th>
+          </tr>
+        </thead>
+
+            <% @issues.sort_by(&:popularity).reverse[0..5].each do |issue| %>
+              <tr id="issue_<%= issue.id %>">        
+                <td><p><%= link_to issue.title, owner_repo_gitnumber_path(issue.repo_owner, issue.repo_name, issue.git_number) %></p>
+                  <p class="issue-comment-count"><a id="link" rel="tooltip" data-placement="top" data-original-title="Points are a combination of the popularity on Github measured by the number of watchers, stars, and the number of comments on an issue blended with Gitbo metrics such as upvotes and owner endorsements"><span class="index-issue-popularity"><%= pluralize issue.popularity, "point" %></span></a> | <%= pluralize issue.comment_count, "comment" %></p>
+                </td>
+                <td><%= link_to issue.repo_name, owner_repo_path(issue.repo_owner, issue.repo_name) %></td>
+              </tr>
+            <% end %>
+    </table>
+  </div>
+
+  <div class='span6'>
+    <h3>Trending repos</h3>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Popularity</th>
+          <th>Open Issues</th>
+          <th></th>
+        </tr>
+        </thead>     
+      <% @repos.sort_by(&:popularity).reverse[0..5].each do |repo| %>
+        <tr>
+          <td><%= link_to repo.owner_name, owner_repos_path(repo.owner_name) %> / <%= link_to repo.name, owner_repo_path(repo.owner_name, repo.name) %></td>
+          <td><%= repo.popularity %></td>
+          <td><%= repo.open_issues %></td>
+        </tr>
+      <% end %>
+    </table>
+    <br />
+  </div>
+</div>
+
+<%= render :partial => 'modals/login' %>
+

@@ -1,0 +1,142 @@
+<div class="issues-nav-control">
+  <div id="issues-search-form">
+    <%= form_tag issues_path, method: :get do %>
+      <p>
+        <%= text_field_tag :query, params[:query], :class => "search-query", :placeholder => "Search" %>
+      </p>
+    <% end %>
+  </div>
+  <span class="btn btn-link unresolved">Open <span class="count">(<%= @issues_unresolved.count %>)</span></span> |
+  <span class="btn btn-link my-issues">Me <span class="count">(<%= @my_issues.count %>)</span></span> |
+  <span class="btn btn-link resolved">Closed <span class="count">(<%= @issues_resolved.count %>)</span></span>
+</div>
+<div class="issues-nav-list">
+  <table class="table issue-nav-table unresolved">
+    <tbody>
+      <% @issues_unresolved.each do |i| %>
+        <tr>
+          <td>
+          <%= link_to issue_path(i), :class => "issue-load", :id => "issue_#{i.id}" do %>
+            <!-- ROW issue-nav-avatar & issue-nav-body -->
+            <div class="issue-nav-primary row">
+              <div class="issue-nav-avatar">
+                <%= issue_owner_image_tag i %>
+              </div>
+              <div class="issue-nav-body">
+                <!-- ROW issue-nav-title -->
+                <div class="issue-nav-title">
+                  <%= truncate(i.title, length: 55) %>
+                </div>
+                <!-- ROW issue-nav-signature -->
+                <div class="issue-nav-signature">
+                  <span class="issue-nav-created-at">created <%= time_ago_in_words(i.created_at) %> ago | </span>
+                  <span class="issue-nav-votes">votes (<%= i.votes_count %>)</span>
+                </div>
+              </div>
+            </div>
+          <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <table class="table issue-nav-table resolved">
+    <tbody>
+      <% @issues_resolved.each do |i| %>
+        <tr>
+          <td>
+          <%= link_to issue_path(i), :class => "issue-load", :id => "issue_#{i.id}" do %>
+            <!-- ROW issue-nav-avatar & issue-nav-body -->
+            <div class="issue-nav-primary row">
+              <div class="issue-nav-avatar">
+                <%= issue_owner_image_tag i %>
+              </div>
+              <div class="issue-nav-body">
+                <!-- ROW issue-nav-title -->
+                <div class="issue-nav-title">
+                  <%= truncate(i.title, length: 55) %>
+                </div>
+                <!-- ROW issue-nav-signature -->
+                <div class="issue-nav-signature">
+                  <span class="issue-nav-created-at">created <%= time_ago_in_words(i.created_at) %> ago | </span>
+                  <span class="issue-nav-votes">votes (<%= i.votes_count %>)</span>
+                </div>
+              </div>
+            </div>
+          <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+
+  <table class="table issue-nav-table my-issues">
+    <tbody>
+      <% @my_issues.each do |i| %>
+       <tr>
+          <td>
+          <%= link_to issue_path(i), :class => "issue-load", :id => "issue_#{i.id}" do %>
+            <!-- ROW issue-nav-avatar & issue-nav-body -->
+            <div class="issue-nav-primary row">
+              <div class="issue-nav-avatar">
+                <%= issue_owner_image_tag i %>
+              </div>
+              <div class="issue-nav-body">
+                <!-- ROW issue-nav-title -->
+                <div class="issue-nav-title">
+                  <%= truncate(i.title, length: 55) %>
+                </div>
+                <!-- ROW issue-nav-signature -->
+                <div class="issue-nav-signature">
+                  <span class="issue-nav-created-at">created <%= time_ago_in_words(i.created_at) %> ago | </span>
+                  <span class="issue-nav-votes">votes (<%= i.votes_count %>)</span>
+                </div>
+              </div>
+            </div>
+          <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  
+  <% unless @issues_search.nil? %>
+    <table class="table issue-nav-table issues-search">
+      <tbody>
+        <% if @issues_search == [] %>
+          <tr><td><h5>Your search returned 0 results</h5></td></tr>
+        <% else %>
+          <% @issues_search.each do |i| %>
+            <tr>
+              <td>
+              <%= link_to issue_path(i), :class => "issue-load", :id => "issue_#{i.id}" do %>
+                <!-- ROW issue-nav-avatar & issue-nav-body -->
+                <div class="issue-nav-primary row">
+                  <div class="issue-nav-avatar">
+                    <%= issue_owner_image_tag i %>
+                  </div>
+                  <div class="issue-nav-body">
+                    <!-- ROW issue-nav-title -->
+                    <div class="issue-nav-title">
+                      <%= truncate(i.title, length: 55) %>
+                    </div>
+                    <!-- ROW issue-nav-signature -->
+                    <div class="issue-nav-signature">
+                      <span class="issue-nav-created-at">created <%= time_ago_in_words(i.created_at) %> ago | </span>
+                      <span class="issue-nav-votes">votes (<%= i.votes_count %>)</span>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+              </td>
+            </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+</div>
+
+

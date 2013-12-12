@@ -1,0 +1,19 @@
+development:
+  fb_api_key: 'XXXXX'
+  fb_secret_key: 'XXXXX'
+  email_delivery_method: 'XXXXX' # eg. 'postmark'
+  email_api: 'XXXXX'
+
+production:
+  fb_api_key: 'XXXXX'
+  fb_secret_key: 'XXXXX'
+  email_delivery_method: 'XXXXX' # eg. 'postmark'
+  email_api: 'XXXXX'
+
+test:
+  fb_api_key: 'XXXXX'
+  fb_secret_key: 'XXXXX'
+  email_delivery_method: 'XXXXX' # eg. 'postmark'
+  email_api: 'XXXXX'
+
+

@@ -1,0 +1,32 @@
+<% current_user_var = current_user %>
+
+<div class="blog-categories widget-tp">
+  <h3>Build a Project!</h3>
+
+  <ul>
+    <li>
+      <div class="user-repo-url">
+        <p class="lead">View on GitHub</p>
+      </div>
+      <div class="user-repo-build">
+       <p class="lead">Build</p> 
+      </div>
+    </li>
+
+    <% Repo.where(:user_id => page_user.id).each do |repo| %>
+      <% if !is_project?(repo) %>
+        <li>
+          <div class="user-repo-url">
+            <%= link_to repo.name.truncate(25), repo.html_url, id: "#{repo.name}", :target => "_blank" %>
+          </div>
+          <div class="user-repo-icon">
+             <%= link_to "", projects_path(:repo_id => repo.id), :method => :post, :"data-name" => "#{repo.name}", class:"icon-plus-sign" %>
+          </div>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
+</div>
+
+
+

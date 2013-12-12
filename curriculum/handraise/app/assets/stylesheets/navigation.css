@@ -1,0 +1,22 @@
+div.navbar-inverse .navbar-inner {
+  background: #9bbbe4; /* Old browsers */
+  background: -moz-linear-gradient(top,  #9bbbe4 0%, #e9eaea 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#9bbbe4), color-stop(100%,#e9eaea)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  #9bbbe4 0%,#e9eaea 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  #9bbbe4 0%,#e9eaea 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  #9bbbe4 0%,#e9eaea 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  #9bbbe4 0%,#e9eaea 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9bbbe4', endColorstr='#e9eaea',GradientType=0 ); /* IE6-9 */
+  border-bottom: thin solid #B18467;
+}
+
+.navbar-inverse a.brand  {
+  color: #B18467;
+  text-shadow: 1px 1px 1px #ccc;
+}
+
+div.navbar-inner ul.nav a {
+  color: #B18467;
+  text-shadow: 1px 1px 1px #ccc;
+  font-weight: bold;
+}

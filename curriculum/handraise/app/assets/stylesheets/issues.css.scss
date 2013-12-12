@@ -1,0 +1,361 @@
+// Place all the styles related to the Issues controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.selected {
+  // background-color: rgba(164,175,89,.5);
+  background-color: silver;
+}
+
+#admin {
+  display: none;
+}
+
+form.new_issue {
+  padding-left: 65px;
+}
+
+.issue-answers-container {
+  margin-left: 0px;
+}
+
+.issues-nav {
+  display: block;
+  max-height: 100%;
+  margin-bottom: 40px;
+  margin-right: 25px;
+  width: 320px;
+  float: left;
+}
+div.issues-nav-control {
+  padding: 0px;
+}
+
+#issues-search-form {
+  margin-left: 15px;
+}
+
+span.issues-nav-selected-scope {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+div.issues-nav-list {
+  height: 100%;
+  overflow-y: scroll;
+}
+
+table.issue-nav-table td {
+  margin-left: 0px;
+  margin-right: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+  height: 60px;
+}
+
+.issue-nav-table tr:hover {
+  background-color: silver;
+}
+
+div.issue-nav-avatar {
+  float:left;
+  margin: 0px;
+  padding: 0px;
+  width: 55px;
+}
+
+.issue-nav-body {
+  margin-bottom: 0px;
+  margin-right: 0px;
+  margin-left: 0px;
+  padding-left: 0px;
+  width: 220px;
+  float: right;
+}
+
+div.issue-nav-title {
+  line-height: 1.5em;
+  // min-height: 48px
+  margin-bottom: .5em;
+}
+
+span.issue-nav-created-at {
+  font-size: 11px;
+  font-style: italic;
+
+}
+
+span.issue-nav-votes {
+  // position:absolute;
+  font-size: 11px;
+  // padding-left: 5px;
+  // padding-right: 5px;
+  // right:0px;
+  // float: left;
+}
+
+p.issue-nav-votes-p {
+  position:absolute;
+  font-size: 11px;
+  padding-left: 5px;
+  padding-right: 5px;
+  right:0px;
+  float: left;
+}
+
+
+// Issue Show Partial
+
+.issue-body {
+  min-height: 225px;
+}
+
+// Issue Signature
+
+div.issue-signature {
+  padding-top: 15px;
+  height: 100%;
+  min-height: 320px;
+}
+
+div.issue-signature-avatar {
+  margin: 0px;
+  padding: 0px;
+  width: 55px;
+}
+
+// Issue State Icon Box
+
+div.signature-info-text {
+  clear: both;
+  padding-top: 10px;
+  padding-right: 3px;
+  margin-bottom: 5px;
+}
+
+div.issue-status-change {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding-right: 4px;
+}
+
+div.resolved-button {
+  margin-top: 0px;
+  padding-top: 0px;
+}
+
+.signature-icon-fresh {
+  background-color: rgba(75,121,180,.5);
+  font-weight: bold;
+  font-size: 24px;
+  height: 40px;
+  text-align: center;
+  padding-top: 20px;
+  border-radius: 10px;
+}
+
+.signature-icon-open {
+  background-color: rgba(232,138,40,.8);
+  font-weight: bold;
+  font-size: 24px;
+  height: 40px;
+  text-align: center;
+  padding-top: 20px;
+  border-radius: 10px;
+}
+
+.signature-icon-instructor {
+  background-color: rgba(232,138,40,.8);
+  font-weight: bold;
+  font-size: 24px;
+  height: 50px;
+  text-align: center;
+  padding-top: 10px;
+  border-radius: 10px;
+}
+
+.signature-icon-instructor p {
+  margin-top: 5px;
+  font-weight: bold;
+  font-size: 12px;
+  text-align: center;
+}
+
+.signature-icon-resolved {
+  background-color: rgba(90,150,68,.8);
+  font-weight: bold;
+  font-size: 24px;
+  height: 40px;
+  text-align: center;
+  padding-top: 20px;
+  border-radius: 10px;
+}
+
+div.new-answer-comment {
+  display: none;
+}
+
+div.issue-actions {
+  background-color: silver;
+  padding-left: 10px;
+  border-radius: 7px;
+  opacity: .8;
+}
+
+div.issue-description {
+  padding-top: 10px;
+}
+
+div.issue-description p {
+  font-size: 14px;
+}
+
+.new-issue-comment {
+  display: none;
+  clear: both;
+}
+
+div.issue-content {
+  width: 500px;
+}
+
+div#issue-comments-toggle {
+  padding-left: 20px;
+  clear: both;
+}
+
+p.comment-content {
+  font-size: 12px;
+}
+
+div.comment-content p {
+  font-size: 12px;
+}
+/*span.issue-title {
+  font-size: 30px;
+}*/
+
+img.up_arrow_issue, img.down_arrow_issue {
+  float: left;
+  margin-left: 0px;
+  margin-right: 4px;
+  opacity: .5;
+}
+
+img.up_arrow, img.down_arrow {
+  float: left;
+  margin-left: 4px;
+  margin-right: 4px;
+  opacity: .5;
+}
+
+img.up_arrow:hover {
+  opacity: 1;
+}
+
+img.no-vote-owner:hover {
+  opacity: .5;
+}
+
+img.down_arrow:hover {
+  opacity: 1;
+}
+
+img.down_arrow {
+  clear: both;
+}
+
+span.total_votes_issue {
+  clear: both;
+  font-size: 25px;
+  padding: 12px 10px 8px 10px;
+  float: left;
+  text-align: center;
+}
+
+span.total_votes {
+  clear: both;
+  font-size: 25px;
+  padding: 10px;
+  float: left;
+  text-align: center;
+}
+
+span.answers-label {
+  font-weight: bold;
+  font-style: italic;
+  margin-top: -10px;
+  margin-right: 20px;
+}
+
+.issue-answer-body {
+  clear: both;
+}
+
+div.answers-section {
+  clear: both;
+}
+
+div.first_answer {
+  border-top: 5px solid silver;
+  padding-top: 15px;
+  margin-top: 30px;
+}
+
+div.answer-content p {
+  font-size: 15px;
+}
+
+div.answer-content {
+  width: 635px;
+}
+
+.issue-answers-container {
+  margin-left: 0px;
+}
+
+div.answers h2+div:first {
+  border-top: 5px solid silver;
+  padding-top: 15px;
+}
+
+.accepted-answer {
+  // margin-left: 100px;
+  border-top: 5px solid silver;
+  padding-top: 15px;
+}
+
+.accepted-answer-body {
+  // background-color: rgba(90,150,68,.4);
+  // padding-top: 20px;
+  padding-bottom: 10px;
+}
+
+div.no-answers {
+  border-bottom: 5px solid silver;
+}
+
+.new-issue-answer {
+  margin-bottom: 60px;
+  margin-right: 130px;
+}
+
+div.issues-nav span.count {
+  font-size: 75%;
+}
+
+div.actions span a {
+  padding-right: 70px;
+}
+
+div.actions span a:hover {
+  background: transparent;
+}
+
+.edit-answer-actions span a:hover {
+  background:transparent;
+}
+
+input.change-status {
+  margin-right: 10px;
+}

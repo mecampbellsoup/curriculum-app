@@ -1,0 +1,20 @@
+<div class="signature-icon-fresh">
+Fresh
+</div>
+
+<% if @issue.is_owner?(current_user) || current_user.is_instructor %>
+  <div class="pull-right issue-status-change">Change Status <i class="icon-chevron-down icon-large"></i></div>
+
+  <div class="urgent-button">
+    <%= form_tag("/issues/#{issue.id}/change_status",:method => :put ) do %>
+      <input name="state" type="hidden" value="ask_instructor">
+      <%= submit_tag "Urgent", class:'btn btn-mini btn-warning pull-right' %>
+    <% end %></br>
+  </div>
+  <div class="resolved-button">
+    <%= form_tag("/issues/#{@issue.id}/change_status",:method => :put ) do %>
+      <input name="state" type="hidden" value="resolve">
+      <%= submit_tag "Resolved", class:'btn btn-mini btn-success pull-right change-status' %>
+    <% end %>
+  </div>
+<% end %>

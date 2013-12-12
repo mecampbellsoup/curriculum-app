@@ -1,0 +1,18 @@
+<div class="center">
+  <h1>Raise your hand!</h1>
+  <p>Welcome to Handrai.se, where all your class concerns are answered.</p>
+  <div class="sign_in_form_container">
+  <%= form_tag sessions_path, :class =>"sign_in" do %>
+    <%= email_field_tag :email, nil, :placeholder =>"Email" %>
+    <%= password_field_tag :password, nil, :placeholder => "Password" %></br>
+    <%= check_box_tag :remember_me, 1, params[:remember_me] %>   remember me
+    <p><%= link_to "forgotten password?", new_password_reset_path %></p>
+    <%= submit_tag "Sign In", :class => "btn btn-primary btn-block" %>
+  <% end %>
+  <%= link_to "Sign In with Facebook", "/auth/facebook", :class => "btn btn-primary btn-block" %>
+
+  </br>
+  <%= link_to "Sign Up Here", sign_up_path, :class => "btn btn-block" %>
+</div>
+</div>
+

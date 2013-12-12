@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @recipe.name %>
+</p>
+<p>
+  <b>Ingredients:</b>
+  <br>
+
+  <% @recipe.ingredients.each_with_index do |ingredient, index| %>
+    <%= index + 1 %>) <%= ingredient.amount %>
+    &nbsp;
+    <%= ingredient.name %>
+    <br>
+  <% end %>
+
+<p>
+  <%= link_to 'Edit', edit_recipe_path(@recipe) %> |
+  <%= link_to 'Back', recipes_path %>
+</p>

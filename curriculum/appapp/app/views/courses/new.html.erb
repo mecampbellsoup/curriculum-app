@@ -1,0 +1,56 @@
+<div class="row-fluid">
+  <div class="span12" id="pad-wrapper">
+    <div class="container">
+      <div class="dossier-form-container">
+        <h2> Create a new course</h2><br>
+        <div class = "form-wrapper">
+          
+          <!-- form tag goes below -->
+          <%= form_for @course do |f| %>
+          
+            <h4><strong> Course Information </strong> </h4>
+            <hr> 
+           <!-- Subject & Season -->
+            <div class="span12 field-box">
+            <%= label_tag "Subject", nil, :class=>'span3' %>
+            <%= text_field_tag "course[subject]", nil, :class => 'span9' %>
+            </div>
+
+            <div class="span12 field-box">
+            <%= label_tag "Season", nil, :class=>'span3' %>
+            <%= text_field_tag "course[season]", nil, :class => 'span9' %>
+            </div>
+
+            <!-- Class Size  -->
+            <div class="span12 field-box">
+            <%= label_tag "Class Size", nil, :class=>'span3' %>
+            <%= number_field_tag "course[seats]", nil, :class => 'span9' %>
+            </div>
+
+            <!-- Start Date  -->
+            <fieldset>
+              <legend><h4>Start Date:</h4></legend>
+              <div class="span12 field-box">
+              <%= label_tag "Month", nil, :class=>'span3' %>
+              <%= number_field_tag "date[month]", nil, :class => 'span9' %>
+              </div>
+
+              <div class="span12 field-box">
+              <%= label_tag "Day", nil, :class=>'span3' %>
+              <%= number_field_tag "date[day]", nil, :class => 'span9' %>
+              </div>
+
+              <div class="span12 field-box">
+              <%= label_tag "Year", nil, :class=>'span3' %>
+              <%= number_field_tag "date[year]", nil, :class => 'span9' %>
+              </div>
+            </fieldset>
+
+            <%= f.submit %>
+
+          <%end%>  
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

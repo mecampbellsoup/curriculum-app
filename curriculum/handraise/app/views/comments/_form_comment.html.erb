@@ -1,0 +1,5 @@
+
+<%= form_for [parent, parent.comments.new], url: issue_answer_comments_path(parent.issue, parent) do |f| %>
+  <%= f.text_area :content, rows: 3, :class => "field span6" %>
+  <%= f.submit "submit", class: "btn" %>
+<% end %>

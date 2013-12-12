@@ -1,0 +1,26 @@
+<h3><%= @dossiers.count %> Dossiers</h3>
+
+<div class="row-fluid table">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+
+        <%= render "table_header_dynamic_sort", :link_name => "Review Me", :link_path => dashboard_path(sort_by: "user") %>
+
+        <%= render "table_header_dynamic_sort", :link_name => "Status", :link_path => dashboard_path(sort_by: "aasm_state") %>
+
+        <%= render "table_header_static_sort", :header_name => "Status History" %>
+
+        <%= render "table_header_static_sort", :header_name => "Change Status" %>
+
+      </tr>
+    </thead>
+
+    <tbody>
+
+      <!-- _dossier_index_table_details.html.erb -->
+      <%= render "dossier_index_table_details", :dossiers => @dossiers %>
+
+    </tbody>
+  </table>
+</div>

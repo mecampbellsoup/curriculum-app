@@ -1,0 +1,25 @@
+<div>
+  <% if @authored_assignments != []%>
+    <table class="table table-striped span11">
+  <%else%>
+    <table class="table table-striped span5">
+  <%end%>
+  <table class="table table-striped">
+    <tr>
+      <th>Name</th>
+      <th>Completed</th>
+      <th>Due date</th>
+      <th></th>
+      <th></th>
+    </tr>
+    <% @authored_assignments.each do |authored_assignment| %>
+      <tr>
+      	<td class="assigned_by_me"><%= link_to authored_assignment.name, authored_assignment %></td>
+      	<td><%= "#{authored_assignment.number_completed}" %> </td>
+      	<td><%= authored_assignment.due_date %></td>
+      	<td><%= link_to 'Add/Remove People', add_student_path(authored_assignment) %></td>
+      	<td class="red"><%= link_to 'Delete Assignment', authored_assignment, method: :delete, data: { confirm: 'This will destroy all associated submissions. Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>

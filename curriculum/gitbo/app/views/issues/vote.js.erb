@@ -1,0 +1,19 @@
+// issue index page
+$("span.<%= @issue.id %>_popularity_net").html("<%= pluralize @issue.popularity, "point" %>");  
+
+// issue on static index page
+// $("tr#issue_<%= @issue.id %> td p.issue-comment-count span.index-issue-popularity").html("<%= pluralize @issue.popularity, "point" %>"); 
+
+// issue show page
+// $(".discussion-stats span.net_votes").html("<strong><%= pluralize @issue.vote_count, "vote" %> </strong>");   
+
+$upvoteIcon = $("i#upvote-icon-<%= @issue.id %>");
+$downvoteIcon = $("i#down-vote-icon-<%= @issue.id %>");
+
+<% if params[:direction] == "upvote" %>
+  $downvoteIcon.addClass('icon-arrow-down').removeClass('icon-circle-arrow-down');
+  $upvoteIcon.removeClass('icon-arrow-up').addClass('icon-circle-arrow-up');
+<% elsif params[:direction] == "downvote" %>
+  $downvoteIcon.removeClass('icon-arrow-down').addClass('icon-circle-arrow-down');
+  $upvoteIcon.addClass('icon-arrow-up').removeClass('icon-circle-arrow-up');
+<% end %> 

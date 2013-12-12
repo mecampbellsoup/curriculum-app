@@ -1,0 +1,22 @@
+<div id="myModal" class="modal hide fade" tabindex="1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      <h3 id="myModalLabel">You, With the Hand Up! How Can I Help You?</h3>
+  </div>
+  <div class="answer modal-body">
+    <%= form_for(Issue.new) do |f| %>
+      <div class="field">
+        <%= f.label :title %><br />
+        <%= f.text_field :title, columns: "38", :class => "span6" %>
+      </div>
+      <div class="field">
+        <%= f.label :description %><br />
+        <%= f.text_area :description, rows: "15", columns: "38", :class => "span6" %>
+      </div>
+      <div class="actions">
+        <%= f.submit :class => "btn btn-success" %>
+        <span class="pull-right"><%= link_to "Markdown help", "http://daringfireball.net/projects/markdown/syntax", :target => "_blank" %></span>
+      </div>
+    <% end %>
+  </div>
+</div>

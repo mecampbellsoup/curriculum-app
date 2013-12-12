@@ -1,0 +1,134 @@
+.page-container {
+  padding-top: 80px;
+  padding-left: 40px;
+  width:1280px;
+}
+
+div.main {
+  width: 1280px;
+  /*margin: 0 auto;*/
+}
+
+.main-page {
+  padding-top: 60px;
+}
+
+.nav-size {
+  width: 1155px;
+  height: 52px;
+}
+
+.hand-icon {
+  position: relative;
+  float: left;
+}
+
+.timer-hand-raise {
+
+}
+
+img.issue-nav-avatar {
+  background-color: none;
+}
+
+/*a.nav-ask-link {
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+  font-size: 30px;
+  border-radius: 6px;
+  width: 60px;
+}*/
+
+a.nav-ask-link {
+font-weight: bold;
+color: white;
+text-decoration: none;
+font-size: 21px;
+border-radius: 6px;
+width: 90px;
+top: -3px;
+position: relative;
+right: -32px;
+outline: 0;
+}
+
+a.nav-ask-link:visited {color: white; outline: 0;}
+a.nav-ask-link:active {color: white; outline: 0;}
+a.nav-ask-link:hover {color: white; background:silver; text-decoration: none; outline: 0;}
+a.nav-ask-link:link {color: white; outline: 0;}
+
+.issues-nav {
+  height: 100%;
+  padding-bottom: 40px;
+}
+
+.issue-show-container {
+  height: 100%;
+  padding-bottom: 40px;
+  overflow-y: auto;
+}
+
+#username-issue {
+  float: left;
+  padding-right: 10px;
+}
+
+div.center {
+  width: 500px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+div.sign_in_form_container {
+  width: 220px;
+  margin: 0 auto;
+  padding: 40px;
+}
+
+.trigger-link-on {
+  text-decoration: underline;
+  color: blue;
+}
+
+.sign-in {
+  text-align: center;
+  font-size: 16px;
+  margin: 8px;
+}
+
+.nav-size {
+  padding-left: 40px;
+}
+
+.nav-size a.brand {
+  font-size: 30px;
+  font-color: #59545e;
+  vertical-align: center;
+  padding-bottom: 0px;
+  top: 4px;
+  left:30px;
+  position: relative;
+}
+
+.sign-in span a:hover {
+  background:transparent;
+}
+
+.navbar a.brand:hover {
+  background:transparent;
+}
+
+form.sign_in input {
+  margin-bottom: 15px;
+}
+
+.settings-menu {
+  /*margin-right: 30px;
+  padding-right: -90px;*/
+}
+
+span.form-field-error-message {
+  color: red;
+  font-style: italic;
+}

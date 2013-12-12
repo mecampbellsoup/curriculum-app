@@ -1,0 +1,8 @@
+<div>
+  <h1 id="project-title">
+    <div class="hero-inline">
+      <%= best_in_place @project, :name, :type => :input, :activator => ".activator-#{@project.id}-name" %>
+    </div>
+    <i class="activator-<%= @project.id %>-name hero icon-pencil"></i>
+  </h1>
+</div>

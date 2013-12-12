@@ -1,0 +1,24 @@
+<div class="container" align="center">
+  <p id="alert"><%= flash[:alert] %></p>
+  <p>Here to checkout our work? login as:</p>
+  <p>User: student0@flatironschool.com</p>
+  <p>Password: password</p>
+  <h1>Log in</h1>
+    <%= form_tag sessions_path do %>
+      <div class="field">
+	       <%= label_tag :email %>
+	       <%= text_field_tag :email, params[:email] %>
+      </div>
+      <div class="field">
+      	<%= label_tag :password %>
+      	<%= password_field_tag :password %>
+      </div>
+      <div class="field">
+        <%= label_tag :forgot_password %>
+        <%= check_box_tag :forgot_password %>
+      </div>
+      <div class="actions logInSubmit"><%= submit_tag "Log in" %></div>
+    <% end %>
+  <h1><%= link_to "Create a New Organization!", signup_path %></h1>
+
+</div>

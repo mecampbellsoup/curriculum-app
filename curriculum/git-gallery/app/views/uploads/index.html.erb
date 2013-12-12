@@ -1,0 +1,11 @@
+<h1>Uploads</h1>
+
+<div id="uploads">
+<% @uploads.each do |upload| %>
+  <div class="upload">
+    <%= simple_format upload.name %>
+  </div>
+<% end %>
+</div>
+
+<p><%= link_to "New Upload", [:new, @uploadable, :upload] %></p>

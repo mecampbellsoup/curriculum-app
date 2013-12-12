@@ -1,0 +1,40 @@
+<section class="section-wrapper stripped">
+  <div class="container">
+    <div class="row">
+      <div class="span12 project-title-custom">
+        <div class="white-card  just-white">
+
+         <h1><%= @user.name %></h1>
+          <%= form_for(@user, :html => {:class => "form-horizontal"}) do |f| %>
+          <%= render :partial => "shared/error_messages", :locals => {:target => @user} %>
+
+          <fieldset>
+            <legend>Please update your account</legend>
+
+                  <%= f.label(:email) %>
+
+                <%= f.text_field :email %>
+
+            <div class="controls edit-user">
+              <ul class="slideshow-button-list">
+              <li>
+                <%= f.submit "Confirm Info", :class => "btn btn-primary btn-extra post-btn" %>
+              </li>
+              <li>
+                <%= link_to 'Delete User', @user, method: :delete, :class => "btn btn-primary btn-extra post-btn", data: { confirm: "Are you sure you want to delete #{@user.name}?" } %>
+              </li>
+            </div>
+
+          </fieldset>
+
+          <% end %>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>    
+
+
+
+

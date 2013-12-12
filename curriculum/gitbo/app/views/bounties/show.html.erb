@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>User:</b>
+  <%= @bounty.user.nickname %>
+</p>
+
+<p>
+  <b>Issue:</b>
+  <%= @bounty.issue.title %>
+</p>
+
+<p>
+  <b>Price:</b>
+  <%= number_to_currency(@bounty.price) %>
+</p>
+
+
+<%= link_to 'Edit', edit_bounty_path(@bounty) %> |
+<%= link_to 'Back to Issue', owner_repo_gitnumber_path(@bounty.issue.repo_owner, @bounty.issue.repo_name, @bounty.issue.git_number) %>

@@ -1,0 +1,10 @@
+#edit_form_name,
+#edit_form_image,
+#edit_form_text_area {
+
+	width:30%;
+	height:100%;
+
+	}
+
+#edit_form_image{margin:2% auto}

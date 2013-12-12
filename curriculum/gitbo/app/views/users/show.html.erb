@@ -1,0 +1,30 @@
+<h3 class="non-reg-user-header"><%= @user.nickname %>'s Bounties</h3>
+
+<p id="notice"><%= notice %></p>
+
+<% if @user.bounties.empty? %>
+  <div class='span12'>
+    <p><%= @user.nickname %> hasn't issued any bounties because they haven't signed up for Gitbo. Invite them!</p>
+  </div>
+<% end %>
+
+  <div class="span9">
+    <ul class="nav nav-tabs" id="myTab">
+      <li class="active"><a href="#user-repos" data-toggle="tab">Gitbo Repos</a>
+      </li>
+      <!-- <li><a href="#user-bounties" data-toggle="tab">Bounties on their repos</a></li> -->
+      <li><a href="#following" data-toggle="tab">Following</a></li>
+      <li><a href="#starred" data-toggle="tab">Starred</a></li>
+      <a class="btn btn-info btn-small" style="float:right;" href="http://www.github.com/<%= @user.nickname %>" target="blank">View owner on <i class='icon-github'></i></a>
+    </ul>
+
+    <div class="tab-content">
+      <div class="tab-pane active" id="user-repos"><%= render 'repos/repos-table' %></div>
+      <!-- <div class="tab-pane" id="user-bounties"></div> -->
+      
+      <div class="tab-pane" id="following"><%= render 'following' %></div>
+      <div class="tab-pane" id="starred"><%= render 'starred' %></div>
+    </div>
+
+  </div>
+

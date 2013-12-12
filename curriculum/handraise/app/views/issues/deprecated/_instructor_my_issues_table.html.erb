@@ -1,0 +1,86 @@
+<h3>
+  <%= pluralize( issues.select{|issue| issue unless issue.instructor_responded? }.count, ' Raised Hand') %></h3>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% issues.each do |issue| %>
+      <% unless issue.instructor_responded? %>
+        <tr>
+          <td class="span3">
+              <%= issue_owner_image_tag issue %>
+              <p><em><%= issue.owner.username %> raised her hand <%= time_ago_in_words(issue.created_at) %> ago</em></p>
+          </td>
+          <td class="span6">
+            <strong><%= link_to issue.title, issue_path(issue), {:class =>"fit-content", :rel => "popover", :title => issue.title, :"data-content"=> issue.description, :"data-trigger" => "hover"} %></strong>
+            <p><%= truncate(issue.description, :length => 200, :omission => '... (continued)') %></p>
+          </td>
+          <td class="span3">
+            <p><em><%= pluralize(issue.answers.count, 'answer') %> submitted</em>
+              <% if issue.answer_id.nil? %>
+                <p>(none accepted)</p>
+              <% else %>
+                answered by <%= Answer.find(issue.answer_id).owner.username %>
+              <% end %>
+            </p>
+            <p><%= issue.total_votes %> total votes
+            </p>
+          </td>
+          <td><button class="btn btn-primary" type="button" data-toggle="modal" data-target="#myModal">Quick Answer</button><%= render 'issues/answer_modal', :issue => issue %></td>
+        </tr>
+
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<h3>Pending Answer Acceptance</h3>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% issues.each do |issue| %>
+    <div class="test"><% answers = issue.answers.select{|answer| answer.id } %></div>
+
+      <% if issue.instructor_responded?  %>
+        <tr>
+          <td class="span3">
+              <%= issue_owner_image_tag issue %>
+              <p><em><%= issue.owner.username %> raised her hand <%= time_ago_in_words(issue.created_at) %> ago</em></p>
+          </td>
+          <td class="span6">
+            <strong><%= link_to issue.title, issue_path(issue), {:rel => "popover", :title => issue.title, :"data-content"=> issue.description, :"data-trigger" => "hover"} %></strong>
+            <p><%= truncate(issue.description, :length => 200, :omission => '... (continued)') %></p>
+          </td>
+          <td class="span3">
+            <p><em><%= pluralize(issue.answers.count, 'answer') %> submitted</em>
+              <% if issue.answer_id.nil? %>
+                <p>(none accepted)</p>
+              <% else %>
+                answered by <%= Answer.find(issue.answer_id).owner.username %>
+              <% end %>
+            </p>
+            <p><%= issue.total_votes %> total votes
+            </p>
+          </td>
+          <td><button class="btn btn-primary" type="button" data-toggle="modal" data-target="#myModal">Quick Answer</button><%= render 'issues/answer_modal', :issue => issue %></td>
+        </tr>
+      <% end %>
+
+    <% end %>
+  </tbody>
+</table>
+
+

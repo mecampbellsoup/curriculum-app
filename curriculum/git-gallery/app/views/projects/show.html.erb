@@ -1,0 +1,160 @@
+<div class="carousel-inner slider-w">
+	<p id="notice" class="gg-notice">
+		<%= notice %>
+	</p>
+</div>
+
+<div class="carousel slide over-something" id="homepage-carousel">
+	<!-- Project Section Starts -->
+	<div class="carousel-inner slider-w">
+		<div class="active item">
+			<div class="container">
+				<h1 class="slider-header">
+					<strong>
+						<%= @project.name %>
+					</strong>
+				</h1>
+				<%= link_to "See this project on GitHub", @project.repo.html_url, :target => "_blank" %>
+				<h2 class="slider-sub-header">
+				<ul class="inline tech">
+					<% @project.technologies.each do |tech| %>
+						<li><%= tech.name %><li>
+					<% end %>
+				</ul>
+				</h2>
+				<h3 class="gg-project-show-description-custom">
+					<%= @project.description %>
+				</h3>
+				<div class="top-account-control visible-desktop">
+					<%= link_to "Edit This Project", edit_project_path(@project), :class => "top-create-account" if @project.users.include?(current_user) %>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Project Section End -->
+	<!-- Contributers Section Start -->
+
+	<div class="sub-slider-features">
+		<div class="container">
+			<div class="row">
+				<div class="info-bullet">
+					<h5>Contributors</h5>
+			<!-- 		test -->
+			<% @project.users.uniq.each do |user| %>
+			<div class="avatar-custom">
+					<figure>
+						<%= link_to (image_tag avatar_url(user), title: "#{user.name}", rel: 'tooltip'), user_path(user) %>
+						<figcaption>
+							<h4><%= user.name.split(" ").first %></h4>
+							<p>Team Lead</p>
+						</figcaption>
+					</figure>
+			</div>
+			<% end %>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- Contributers Section End -->
+</div>
+
+<!-- Feature Carousel Starts Here -->
+<section class="section-wrapper under-slider">
+<div class="container">
+	<div class="row">
+		<div class="span12 span12-custom">
+			<h3 class="section-header">Features</h3>
+		</div>
+		<div class="clearfix">
+			<div class="accordion" id="accordion">
+				<% @project.features.each_with_index do |feat, index| %>
+				<div class="accordion-group">
+					<div class="accordion-heading">
+						<a class="accordion-toggle" data-parent="#accordion" data-toggle="collapse" href="#collapse<%=index%>">
+							<%= feat.title.downcase.gsub(" ", "_") %>
+							<%= image_tag avatar_url(feat.user), :class => "accordion-inline-avatar pull-left" %>
+						</a>
+					</div>
+					<div class="accordion-body collapse" id="collapse<%=index%>">
+						<div class="accordion-inner">
+							<div class="span8">
+								<h3 class="accordion-feat-title">BEHIND THE SCENES OF <%= feat.user.name.upcase %>'S <%= feat.title.upcase %></h3>
+								<h4><strong>Feature Description:</strong></h4>
+								<h4 class="accordion-feat-description-custom"><%= feat.description %></h4>
+							</div>
+							<div class="span2 accordion-feat-author">
+								<h2 class="accordion-feat-name-custom">
+									<%= feat.user.name if feat.user %>
+								</h2>
+								<%= link_to (image_tag avatar_url(feat.user), class: "img-circle"), user_path(feat.user) if feat.user %>
+							</div>
+							<div class="clearfix">
+							</div>
+						</div>
+						<div class="accordion-inner">
+							<div id="myCarousel<%=feat.id%>" class="carousel slide">
+								<div class="carousel-inner">
+									<% if feat.slides_in_order.any? %>
+										<% feat.slides_in_order.each do |slide| %>
+											<div class="item">
+												<p class="accordion-feat-name-custom">
+													<%= slide.name %>
+												</p>
+												<p class="accordion-feat-pagination">
+													<%= slide.position + 1 %>
+								          of
+								          <%= feat.slides_in_order.length %>
+												</p>
+												<div class="accordion-feat-upload-custom">
+													<%= snippet_or_upload_show(slide) %>
+												</div>
+												<h6 class="accordion-slide-description-custom">
+													<%= slide.description %>
+												</h6>
+												<a class="left carousel-control" href="#myCarousel<%=feat.id%>" data-slide="prev">‹</a>
+												<a class="right carousel-control" href="#myCarousel<%=feat.id%>" data-slide="next">›</a>
+											</div>
+										<% end %>
+											<p class="top-account-control">
+												<% if feat.user == current_user %>
+													<%= link_to "Add Slides", new_feature_slide_path(feat), :class => "top-create-account" %><br><br>
+													<%= link_to "Edit #{feat.title}", edit_feature_path(feat), :class => "top-create-account" %>
+												<% end %>
+											</p>
+									<% else%>
+										<div class="item">
+											<p class="accordion-feat-name-custom">
+												<%= no_slides_message(feat) %>
+											</p>
+											<p class="top-account-control">
+												<%= link_to "Add Slides", new_feature_slide_path(feat), :class => "top-create-account" if feat.user == current_user %><br><br>
+												<%= link_to "Edit #{feat.title}", edit_feature_path(feat), :class => "top-create-account" %>
+											</p>
+										</div>							
+									<% end %>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<% end %>
+			</div>
+		</div>
+		<div class="top-account-control visible-desktop">
+			<%= link_to "Add a Feature", new_project_feature_path(@project), :class => "top-create-account" if @project.users.include?(current_user) %>
+		</div>
+	</div>
+</div>
+</section>
+
+<!-- Feature Carousel Ends Here -->
+
+
+
+		
+		
+		
+	

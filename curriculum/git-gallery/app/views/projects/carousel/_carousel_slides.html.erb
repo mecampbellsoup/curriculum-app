@@ -1,0 +1,13 @@
+<div id="<%= feature.id %>" class="carousel slide">
+  
+  <!-- Carousel items -->
+  <div class="carousel-inner">
+    <% if !feature.slides_in_order.empty? %>
+      <%= render :collection => feature.slides_in_order, :partial => 'projects/features/slide', :as => :slide_type %>
+      <a class="carousel-control left" href="#<%= feature.id %>" data-slide="prev">&lsaquo;</a>
+      <a class="carousel-control right" href="#<%= feature.id %>" data-slide="next">&rsaquo;</a>
+    <% else %>
+      <h2><%= feature.title %> has no slides.</h2>
+    <% end %>
+  </div>
+</div>

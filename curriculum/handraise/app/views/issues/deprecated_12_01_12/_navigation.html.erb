@@ -1,0 +1,31 @@
+
+
+
+
+        <li class="active"><a href="index.html"><i class="icon icon-home"></i> <span>Dashboard</span></a></li>
+
+        <% @issues.each do |issue| %>
+            <li class="">
+                <%= link_to issue_path(issue), :remote => true do  %>
+                    <%= div_for issue do %>
+                      <%= issue_owner_image_tag issue %>
+                      <div>
+                        <%= truncate(issue.title, length: 50) %>
+                        <%= issue.total_votes %> total votes
+                        <span class="issue-nav-created-at">created <%= time_ago_in_words(issue.created_at) %> ago</span>
+                     </div>
+                    <% end %>
+                <% end %>
+            </li>
+        <% end %>
+
+
+        <li class="submenu">
+          <a href="#"><i class="icon icon-file"></i> <span>Sample pages</span> <span class="label">4</span></a>
+          <ul>
+            <li><a href="invoice.html">Invoice</a></li>
+            <li><a href="chat.html">Support chat</a></li>
+            <li><a href="calendar.html">Calendar</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+          </ul>
+        </li>

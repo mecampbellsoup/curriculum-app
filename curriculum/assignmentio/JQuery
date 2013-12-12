@@ -1,0 +1,15 @@
+JQueryui.com
+
+Accordion for bootstrap
+
+connect lists
+sortable
+
+pass a two <ul>s into the view
+listname.sortable{
+  update.function()
+    SOMETHING AJAXY
+}
+
+Autocomplete plugin
+

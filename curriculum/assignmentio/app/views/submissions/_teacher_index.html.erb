@@ -1,0 +1,46 @@
+
+
+<div class="bigger">
+  <%= @assignment.name %>
+</div>
+
+<div class="bigger">
+  Due date: <%= @assignment.due_date %>
+</div>
+
+<% if @user_assignments == [] %>
+  <h2>There are no people assigned to this assignment. Why not <%= link_to "add some?", add_student_path(@assignment) %></h2>
+<% end %>
+
+<% if @user_assignments != [] %>
+  <table class="table table-striped">
+    <tr>
+      <th>Student Name</th>
+      <th>Date Submitted</th>
+      <th>Status</th>
+      <th>File Submissions</th>
+      <th>Feedback</th>
+    </tr>
+    <% @user_assignments.each do |user_assignment| %>
+      <tr>
+        <td><%= user_assignment.user.name || user_assignment.user.email%></td>
+          <% if user_assignment.is_submitted? || user_assignment.is_graded?%>
+          	<td><%= user_assignment.submission.created_at %></td>
+          	<td><%=link_to "View Submission", user_assignment_submissions_path(user_assignment)%> </td>
+          	<td><%= file_submitted(user_assignment.submission) %></td>
+          	<td><%= link_to 'Give Feedback', user_assignment_submissions_path(user_assignment) %></td>
+          <% else %>
+            <td>Not submitted <%= link_to '(send reminder)', reminder_path(user_assignment), remote:true %></td>
+            <td><%= user_assignment.status %></td>
+            <td></td>
+            <td></td>
+          <% end %>
+      </tr>
+    <% end %>
+  </table>
+
+  <p>
+    <%= link_to "download all", download_all_path(@assignment) if submitted_any_files(@user_assignments)
+    %>
+  </p>
+<% end %>

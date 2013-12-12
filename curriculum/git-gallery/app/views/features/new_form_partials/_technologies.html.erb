@@ -1,0 +1,15 @@
+<%= label_tag 'feature[technologies_to_add][]', 'Technologies', class: "control-label" %>  
+
+<div class="controls new-feature">
+  <select data-placeholder="Choose Technologies..." class="chosen-select" multiple style="width:350px;" tabindex="4">
+    <option value=""></option>
+    <% for technology in @technologies %>
+    <option value="United States"><%= technology.name %></option>
+    <% end %>
+  </select>
+</div>
+
+
+
+
+

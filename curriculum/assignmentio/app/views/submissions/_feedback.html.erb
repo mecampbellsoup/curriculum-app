@@ -1,0 +1,22 @@
+<div></br><b>give feedback:</b></br></br>
+<%= form_for(@submission, {url: submission_feedbacks_path(@submission), method: :post} ) do |f| %>
+  <% if @submission.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@submission.errors.count, "error") %> prohibited this submission from being saved:</h2>
+      <ul>
+      <% @submission.errors.full_messages.each do |msg| %>
+	<li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class = "field">
+    <%= f.text_area :feedback, :class=> "span6", :rows=>"15"%>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+</div>

@@ -1,0 +1,14 @@
+<div class="submit-answer-toggle btn-link"><strong>Submit An Answer</strong></div>
+<hr>
+<ul>
+  <% unless @issue.answers.blank? %>
+    <% @issue.answers.each do |answer| %>
+      <li class="answer-list-toggle btn-link" id="<%= answer.id %>">
+        <%= answer.content %></a>
+        <p><%= answer.total_votes %> votes</p>
+        <em>by <%= answer.owner.username %>, <%= time_ago_in_words(answer.created_at) %> ago</em>
+      </li>
+    <hr>
+    <% end %>
+  <% end %>
+</ul>

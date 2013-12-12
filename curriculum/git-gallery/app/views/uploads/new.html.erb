@@ -1,0 +1,22 @@
+<div class="container span8 gg-feature-form">
+  <%= form_for [@uploadable, @upload], html: {class: "form-horizontal delete-on-back"} do |f|%>
+    <%= render partial: "shared/error_messages", :locals => {:target => @upload} %>
+    <fieldset>
+      <h1>
+        New Image Slide!
+      </h1>
+
+      <div class="gg-form-section">
+        <div class="control-group"><%= render partial: "uploads/new_upload_partials/name", :locals => {:f => f, :upload => @upload} %></div>
+        <div class="control-group"><%= render partial: "uploads/new_upload_partials/image", :locals => {:f => f, :upload => @upload} %></div>
+        <div class="control-group"><%= render partial: "uploads/new_upload_partials/description", :locals => {:f => f, :upload => @upload} %></div>
+      </div>
+      
+      <div class="button-options">
+        <%= submit_to_uploadable(@uploadable, f) %>
+      </div>
+    </fieldset>
+  <% end %>
+</div>
+
+

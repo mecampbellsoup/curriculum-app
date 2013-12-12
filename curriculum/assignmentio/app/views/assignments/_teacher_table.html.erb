@@ -1,0 +1,47 @@
+    <div class="span3">
+      <h3><%= link_to 'edit this assignment', edit_assignment_path(@assignment) %></h3>
+    </div>
+    <div class="span3">
+      <h3><%= link_to 'add/remove people', add_student_path(@assignment) %></h3>
+    </div>
+    <div class="span3">
+      <h3><%= link_to 'delete assignment', @assignment, method: :delete, data: { confirm: 'This will destroy all associated submissions. Are you sure?' } %></h3></br></br></br>
+    </div>
+    <div class="span3">
+      <h3><%= link_to "download all submitted files", download_all_path(@assignment) if submitted_any_files(@user_assignments)%></h3>
+    </div>
+    <% if @user_assignments == [] %>
+      <h2 class="span12"><center>There are no people assigned to this assignment. Why not <%= link_to "add some?", add_student_path(@assignment) %></center></h2>
+    <% end %>
+    <div class="span12">
+      <% if @user_assignments != [] %>
+        <ul class="nav nav-tabs" id="myTab">
+          <li class="active inactive"><a href="#all">All</a></li>
+          <li class="inactive"><a href="#overdue">Overdue</a></li>
+          <li class="inactive"><a href="#incomplete">Incomplete</a></li>
+          <li class="inactive"><a href="#submitted">Submitted</a></li>
+          <li class="inactive"><a href="#graded">Graded</a></li>
+          <li class="inactive"><a href="#unconfirmed">Unconfirmed People</a></li>
+        </ul>
+        <div class="tab-content">
+          <div class="tab-pane active" id="all">
+            <%= render partial: 'students_assigned', locals: {user_assignments: @user_assignments}  %>
+          </div>
+          <div class="tab-pane" id="overdue">
+            <%= render partial: 'students_assigned', locals: {user_assignments: @user_assignments.select{ |e| e.is_overdue?}}  %>
+          </div>
+          <div class="tab-pane" id="incomplete">
+            <%= render partial: 'students_assigned', locals: {user_assignments: @user_assignments.select{ |e| e.is_incomplete?}}  %>
+          </div>
+          <div class="tab-pane" id="submitted">
+            <%= render partial: 'students_assigned', locals: {user_assignments: @user_assignments.select{ |e| e.is_submitted?}}  %>
+          </div>
+          <div class="tab-pane" id="graded">
+            <%= render partial: 'students_assigned', locals: {user_assignments: @user_assignments.select{ |e| e.is_graded?}}  %>
+          </div>
+          <div class="tab-pane" id="unconfirmed">
+            <%= render partial: 'students_assigned', locals: {user_assignments: @user_assignments.select{ |e| e.user.is_unconfirmed?}}  %>
+          </div>
+        </div>
+      <% end %>
+    </div>

@@ -1,0 +1,15 @@
+<ul class="nav">	
+	<li>
+		<%= form_tag(users_path, :method => "get") do %>
+  		<%= text_field_tag :search, params[:search], placeholder: "Search Users" %>
+  	<% end %>
+  </li>
+</ul>
+
+<!-- LOGIN/ACCOUNT BAR  -->
+<div class="top-account-control visible-desktop">
+	<!-- ACCOUNT TAB -->
+	<i><%= link_to "", edit_user_path(current_user), :class => "icon-cog pull-right" if logged_in?  %></i>
+	<%= render 'layouts/login' %>
+	<%= link_to "#{current_user.name}", current_user, class: 'top-create-account' if logged_in? %>
+</div>

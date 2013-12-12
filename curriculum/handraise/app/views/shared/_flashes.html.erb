@@ -1,0 +1,8 @@
+<% [:notice, :error, :alert, :warning].each do |level| %>
+  <% unless flash[level].blank? %>
+  <div data-alert="alert" class="alert alert-<%= flash_class(level) %> fade in">
+                <a class= data-dismiss="alert" href="#">&times;</a>
+    <%= "#{flash[level]} " %>
+    </div>
+  <% end %>
+<% end %>

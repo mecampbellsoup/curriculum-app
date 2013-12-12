@@ -1,0 +1,33 @@
+body {
+    background-image: url( "old_math.png");
+}
+
+h1.splash {
+  font-family: 'Bree Serif', Georgia, serif;
+  font-weight: 400;
+  font-size: 8em;
+  line-height: 1.25;
+  color: #2C237E;
+}
+ 
+div.center p.splash {
+  font-family: 'Open Sans', Verdana, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 100em;
+}
+
+
+h3.splash {
+  font-family: 'Bree Serif', Georgia, serif;
+  font-weight: 400;
+  font-size: 5em;
+  line-height: 1.25;
+  color: #2C237E;
+}
+
+.btn.starting {
+  font-size: 2em;
+  line-height: 1;
+  padding: 18px;
+  color: #2C237E;
+}

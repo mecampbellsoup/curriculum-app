@@ -1,0 +1,52 @@
+// Place all the styles related to the assignments controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+div.logInSubmit {
+  padding-top: 2em;
+}
+ul.students_added{
+  margin:0px;
+}
+ul.students_invited{
+  background-color:#EEE;
+}
+li.added_student:hover{
+  background-color:  #8b93a6;
+  color:black;
+  cursor:pointer;
+}
+ul.students_added .added_student{
+  background-color:#EEE;
+  margin-bottom:3px;
+  margin-left: 3px;
+  width: 48%;
+  float:left;
+}
+
+.added {
+  padding: -30px;
+}
+
+.connectedSortable{
+  background-color:white;
+  height: 100px;
+}
+
+#sortable1, #sortable2 { 
+  list-style-type: none; 
+  margin: 0; 
+  padding: 0 0 2.5em; 
+  float: left; 
+  margin-right: 10px; 
+}
+#sortable1 li, #sortable2 li { 
+  margin: 0 5px 5px 5px; 
+  padding: 5px; 
+  font-size: 1.2em; 
+  width: 120px; 
+}
+
+li.inactive a {
+  background-color: #EEEEEE;
+}

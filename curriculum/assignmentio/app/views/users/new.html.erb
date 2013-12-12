@@ -1,0 +1,49 @@
+<h4 id = "notice"><%= notice %></h4>
+
+<h1>sign up</h1>
+<%= form_for @user,{url: signup_path} do |f| %>
+  <% if @user.errors.any? %>
+    <div class="error_messages">
+      <h2>Form is invalid</h2>
+      <ul>
+        <% for message in @user.errors.full_messages %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="span5">
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+  </div>
+  <div class="field">
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation %>
+  </div>
+</div>
+<div class="span5">
+  <%= f.fields_for :organization do |d| %>
+
+  <div class="field">
+    <%= d.label :name %>
+    <%= d.text_field :name %>
+  </div>
+  
+  <div class="field">
+    <%= d.label :subdomain %>
+    <%= d.text_field :subdomain %>
+  </div>
+<% end %>
+</div>
+  <div class="actions span12"><%= f.submit %></div>
+<% end %>

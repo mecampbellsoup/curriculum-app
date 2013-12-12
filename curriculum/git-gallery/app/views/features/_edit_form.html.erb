@@ -1,0 +1,92 @@
+<%= form_for([@project, @feature]) do |f| %>
+  <% if @feature.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@feature.errors.count, "error") %> prohibited this feature from being saved:</h2>
+
+      <ul>
+      <% @feature.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <fieldset>
+    <div >
+      <div >
+        <%= f.label :title%>
+      </div>
+        <div><%= f.text_field :title %></div>
+    </div>
+
+    <div >
+      <div >
+        <%= f.label :description%>
+      </div>
+        <div ><%= f.text_field :description %></div>
+    </div>
+
+
+
+    <ul id="sortable2" class="sortable grid">
+      
+    <% @feature.slides_in_order.each do |slide| %>
+         <li draggable="true" class="" style="display: list-item;">
+         <input type="hidden" name="slides[][class]" value="<%= slide.class %>"></input>
+         <input type="hidden" name="slides[][id]" value="<%= slide.id %>"></input>
+         <p><%= slide.name %></p>
+          <p><%= slide.description%></p>
+          </li>
+        <% end %>
+    </ul>
+
+    
+
+     <div >
+      <div>
+        <%= label_tag 'feature[technologies_to_add][]', 'Technologies'%>
+      </div>
+      <div >
+
+        <% for technology in @technologies %>
+          <%= check_box_tag 'feature[technology_ids][]',technology.id, @feature.technologies.include?(technology) %>
+          <%= technology.name %>
+        <% end %>
+      </div>
+
+
+            <div>
+        <% @feature.snippets.each do |snippet| %>
+        <span>
+          <h4><%= link_to snippet.name, snippet.url %></h4>
+          <span >
+          <%= link_to "Edit", edit_snippet_path(snippet) %>
+        </span>
+      </span>
+        <p><%= snippet.description %></p>
+
+        <div>
+          <%= raw Pygments.highlight(snippet.code, lexer: snippet.language) %>
+        </div>
+    <% end %>
+    </div>
+
+<p><b>Image(s):</b>
+    <% @feature.uploads.each do |upload| %>
+      <%= image_tag upload.image_url.to_s, width: '100' if upload.image? %>
+    <% end %>
+</p>
+
+ <b>Check Out <%= @feature.user.name.split.first %>'s Other Work Using These Technologies:</b>
+  <ul >
+    <% @feature.technologies.each do |technology| %>
+      <li><%= link_to technology.name, user_technology_path(@feature.user, technology) %></li>
+    <% end %>
+  </ul>
+</div>
+
+  <div >
+    <%= f.submit %>
+  </div>
+</fieldset>
+<% end %>

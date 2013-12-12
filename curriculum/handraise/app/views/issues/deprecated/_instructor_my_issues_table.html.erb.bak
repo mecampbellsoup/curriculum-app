@@ -1,0 +1,78 @@
+<h3>
+  <%= pluralize( issues.select{|issue| issue unless issue.instructor_responded? }.count, ' Raised Hand') %></h3>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th>test</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% issues.each do |issue| %>
+      <% unless issue.instructor_responded? %>
+        <tr>
+          <td class="span3">
+            <strong><%= link_to issue.title, issue_path(issue) %></strong>
+            <p><em>submitted <%= time_ago_in_words(issue.created_at) %> ago by <%= issue.owner.username %></em></p>
+          </td>
+          <td class="span6"><%= link_to issue.description, issue_path(issue) %></td>
+          <td class="span3">
+            <p><em><%= pluralize(issue.answers.count, 'answer') %> submitted</em>
+              <% if issue.answer_id.nil? %>
+                <p>(none accepted)</p>
+              <% else %>
+                answered by <%= Answer.find(issue.answer_id).owner.username %>
+              <% end %>
+            </p>
+          </td>
+          <td><button class="btn btn-primary" type="button" data-toggle="modal" data-target="#myModal">Quick Answer</button><%= render 'issues/answer_modal', :issue => issue %></td>
+          <td>  <%= image_tag issue.owner.image_url, :size => "64x64" %></td>
+        </tr>
+
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<h3>Pending Answer Acceptance</h3>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% issues.each do |issue| %>
+    <div class="test"><% answers = issue.answers.select{|answer| answer.id } %></div>
+
+      <% if issue.instructor_responded?  %>
+        <tr>
+          <td class="span3">
+            <strong><%= link_to issue.title, issue_path(issue) %></strong>
+            <p><em>submitted <%= time_ago_in_words(issue.created_at) %> ago by <%= issue.owner.username %></em></p>
+          </td>
+          <td class="span6"><%= link_to issue.description, issue_path(issue) %></td>
+          <td class="span3">
+            <p><em><%= pluralize(issue.answers.count, 'answer') %> submitted</em>
+              <% if issue.answer_id.nil? %>
+                <p>(none accepted)</p>
+              <% else %>
+                answered by <%= Answer.find(issue.answer_id).owner.username %>
+              <% end %>
+            </p>
+          </td>
+          <td><button class="btn btn-primary" type="button" data-toggle="modal" data-target="#myModal">Quick Answer</button><%= render 'issues/answer_modal', :issue => issue %></td>
+        </tr>
+      <% end %>
+
+    <% end %>
+  </tbody>
+</table>
+
+

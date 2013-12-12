@@ -1,0 +1,197 @@
+ <% if flash[:notice] %> 
+  <div  class='alert alert-success'>
+    <button type="button" class="close" data-dismiss="alert">×</button> 
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+ <% if flash[:error] %> 
+  <div  class='alert alert-error'>
+    <button type="button" class="close" data-dismiss="alert">×</button> 
+    <%= flash[:error] %>
+  </div>
+<% end %>
+<% if current_user %>
+  <% if repo_owner %>
+  <div class="row">
+    <% unless @issue.owner_endorsement != 0 %>
+    <div class="span7">
+      <h4>This issue belongs to your repo. Please, consider endorsing it!</h4>
+    </div>
+    <% end %>
+    <div class="span5 pull-right" id="endorse" >
+      <button class="btn btn-success btn-small"><%= link_to 'Endorse this issue', owner_endorsement_path(@issue, :endorsement), :method => :put %></button>
+      <button class="btn btn-danger btn-small"><%= link_to 'Over my dead body', owner_endorsement_path(@issue, :disapproval), :method => :put %></button>
+    </div>
+  </div>
+  <% end %>
+<% end %>
+  <!-- End repo-owner endorsement -->
+  <!-- Refresh -->
+  <div class="row">
+    <div class ='span8'>
+      <div class='pull-left'>
+      <h3 id='grey_color'>issue #<%= @issue.git_number %> of <%= link_to @issue.repo_name, owner_repo_path(@issue.repo_owner, @issue.repo_name) %> <small> by <%= link_to @issue.repo_owner, owner_repos_path(@issue.repo_owner) %></small></h3>
+      <div class="discussion-stats issue-comment-count">
+        <span class='issue-comment-count'><%= pluralize @issue.comment_count, "comment" %> | <%= @issue.popularity %>  points</span>
+      </div>
+    </div>
+      <div class="endorsement">
+        <% if @issue.owner_endorsement == 1 %>
+          <span id="endorsement" class="badge badge-success">Endorsed</span>
+        <% elsif @issue.owner_endorsement == -1 %>
+          <span id="endorsement" class="badge badge-important">Not Endorsed</span>
+        <% end %>
+      </div>
+    </div>
+
+    <!-- bounty button -->
+
+    <div class="span4">
+      <div class="pull-right">
+      <% if current_user %> 
+        <%= link_to_new_bounty_for @issue %>
+        <% if @issue.state == 'closed' %>
+          <button id="bounty-claim" class="btn btn-warning btn-small" href="#claim-bounty-confirmation" data-toggle="modal" type="button">I Solved This</button>
+        <% end %>
+      <% else %>
+        <button id="bounty-unauth" class="btn btn-success btn-small" href="#login-prompt" data-toggle="modal" type="button">Issue Bounty</button>
+        <% if @issue.state == 'closed' %>
+          <button id="claim-unauth" class="btn btn-warning btn-small" href="#login-prompt" data-toggle="modal" type="button">I Solved This</button>
+        <% end %>
+      <% end %>
+      </div>
+    </div>
+
+    <!-- bounty button end -->
+
+  </div>
+
+<!-- <div id="show_issue"> -->
+  <div class="row issue-head">
+    <span class="back">
+      <span class="icon-arrow-left"></span>
+      <%= link_to 'View All Issues', owner_repo_path %>
+    </span>
+    <span class="number pull-right"><a class="btn btn-info btn-small" href="http://www.github.com/<%= @issue.repo_owner %>/<%= @issue.repo_name %>/issues/<%= @issue.git_number %>" target="blank">
+            View on <i class='icon-github'></i>
+        </a></span>
+  </div>
+
+<!-- sidebar with badge and stats-->
+  <!-- main block with description and comments -->
+  <div class= 'row'>
+    <div class='span8'>
+      <div class='row issue_bg'>
+        <div class="issue-bubble">
+            <img src="<%= @issue.owner_image %>" class='comment-avatar '>
+            <!-- <div class='pull-left'>
+              <%#= render 'issues/issue_vote', :issue => @issue%>
+            </div> -->
+          <div class='issue-content bubble'>
+            <div class='issue-inner'>
+              <div class='issue-header'>
+                <span class='issue-author'>
+                  <p><%= @issue.owner_name %> opened this pull request</p>
+                </span>
+                <h4><%= @issue.title %></h4>
+              </div>
+              <div class='issue-description-content'>
+                <div class='description-body'>
+                  <p><%= markdown @issue.body %></p>
+                </div>
+              </div>
+            </div>
+          </div>  
+        </div>
+      </div>
+
+    <% @issue.comments.each do |comment| %>
+      <div class='row'>
+        <div class='comment-container'>
+          <img src="<%= comment.owner_image %>" class='comment-avatar'>
+          <div class='comment-content bubble'>
+            <div class='content-container-inner'>
+              <div class='comment-header'>
+                <div class='comment-author'>
+                  <p><%= comment.owner_name %></p>
+                </div>
+                <div class='pull-right header-date'>
+                  <% if comment.git_update_at %>
+                  <time><%= time_ago_in_words(comment.git_update_at) %> ago</time>
+                  <% end %>
+                </div>
+              </div>
+              <div class='comment-content'>
+                <% if comment.body %>
+                <p><%= markdown comment.body %></p>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% end %>
+      <div class='row'>
+        <div class='comment-container'>
+          <% if current_user %>
+            <img src="<%= current_user.image %>" class='new-comment-avatar'>
+            <div class='comment-content bubble'>
+              <div class='comment-content'>
+                <div class='comment form'>
+                  <div class='new-comment-bucket'>
+                     <%= render 'comment_form' %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="span4">
+      <div class='right-sidebar'>
+        <h5>Current Bounties</h5>
+       <% if @issue.bounties.count == 0 %>
+        <div id="no_bounty">
+          <p>There are currently no bounties for this issue</br>
+          <%= link_to "Issue a Bounty", 'javascript:focusBountyForm();' %></p>
+        </div>
+        <% else %>
+          <%= render 'bounties/bounties_table', :issue => @issue, remote: true %>
+        <% end %>
+        <div class='row '>
+          <div class="vote span2 pull-left">
+            <%= render :partial => 'vote_button_logic', :locals => { :issue => @issue } %>
+          </div>
+          <div class='span2 difficulty_block'>
+            <%= render :partial => 'issues/difficulty_message', :locals => { :issue => @issue } %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script type="text/javascript">
+
+//   var oldTime = new Date('<%= @issue.updated_at %>');
+
+//   setInterval(function() {
+//     var url = '<%= "/#{@issue.repo_owner}/#{@issue.repo_name}/issues/#{@issue.git_number}.json" %>'
+//     $.getJSON(url, {}, function(json){
+//       var newTime = new Date(Date.parse(json.updated_at));
+//       console.log(newTime)
+      
+//       if (oldTime.valueOf() != newTime.valueOf()){
+//         console.log('diff')
+//         $('div#refresh-wrapper').removeAttr('style');
+//         $('div#refresh').fadeTo(5000);
+//         $('div#refresh').click(function(){
+//           location.reload();
+//         });
+//       }
+//     });
+//   }, 4000);
+ </script>
+
+<%= render :partial => 'modals/login' %>
+<%= render :partial => 'modals/bounty_confirmation', :locals => { :issue => @issue } %>
