@@ -4,8 +4,6 @@ require 'yaml'
 require 'dotenv'
 
 Dotenv.load
-
-binding.pry
     
 # TODO: use this to check all flatiron repos for readme; parse the readme for yaml tags; do the usual magic
 
@@ -14,10 +12,10 @@ client = Octokit::Client.new \
   :client_id     => ENV["GITHUB_CLIENT_ID"],
   :client_secret => ENV["GITHUB_CLIENT_SECRET"]
 
-# client = Octokit::Client.new :login => 'mecampbellsoup', :password => 'imahoe!1'
+# client = Octokit::Client.new :login => 'flatiron-school', :password => 'imahoe!1'
 
 # Getting all the repos associated with the argument/account passed to the method
-TestRepos = client.repositories('mecampbellsoup')
+TestRepos = client.repositories('flatiron-school')
 
 # Getting an array of the full names of each repo
 full_names = TestRepos.map do |repo|
@@ -46,5 +44,3 @@ yaml_from_readmes = readmes.map do |lab_hash|
 end.compact.select { |yaml_readme| yaml_readme.is_a? Hash }
 
 # Now I have an array of links and the associated YAML tags...
-
-binding.pry
