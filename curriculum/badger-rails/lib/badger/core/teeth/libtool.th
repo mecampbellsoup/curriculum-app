@@ -1,9 +1,0 @@
-yum_libtool() {
-  Exists /usr/bin/libtool && return 0
-  yum -y install libtool
-}
-
-apt_libtool() {
-  Exists /usr/bin/libtool && return 0
-  apt-get -y install libtool
-}

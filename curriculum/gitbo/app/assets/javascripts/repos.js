@@ -1,1 +1,0 @@
-$('div#seal').hide();

@@ -1,3 +1,0 @@
-$("#issue-<%= @vote.issue_id %> span.votes").append("<%= render_escaped('shared/flashes') %>");
-$("#issue-<%= @vote.issue_id %> span.votes").text("<%= @vote.issue.total_votes %>");
-$('#issue_<%= @vote.issue_id %> span.issue-nav-votes').text("votes (<%= @vote.issue.total_votes %>)")

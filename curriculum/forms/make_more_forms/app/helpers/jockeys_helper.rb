@@ -1,2 +1,0 @@
-module JockeysHelper
-end

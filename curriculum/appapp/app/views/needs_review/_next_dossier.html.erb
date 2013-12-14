@@ -1,5 +1,0 @@
-<% if next_dossier %>
-  <%= link_to "Next →", needs_review_show_path(next_dossier), :class => "btn btn-flat white"%>
-<% else %>
-  <%= button_tag "Next →", :class => "btn btn-flat white", :disabled => "disabled" %>
-<% end %>

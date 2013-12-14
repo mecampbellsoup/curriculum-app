@@ -17,8 +17,8 @@ end
 # This method populates the curriculum directory with labs. 
 desc 'Clone lab repositories (plus some other magic)'
 task :clone_repos => [:environment] do
-  # Pretty sure we have already required the needed file on line 8 above
-  # require './lib/lab_cloner'
+  # Require the Octokit stuff first, which will make LabHashes available for the cloner
+  require './lib/octokit'
 
   # Let's instantiate and call. Make sure to read through the Cloner class.
   cloner = LabCloner.new(*LabHashes.map {|lab| lab[:ssh]})

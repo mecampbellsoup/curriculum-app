@@ -1,8 +1,0 @@
-<%= form_for @user, :class => "sign_in" do |f| %>
-  <%= f.text_field :email, :placeholder => "Email" %></br>
-  <%= f.password_field :password, :placeholder => "Password" %></br>
-  <%= f.password_field :password_confirmation, :placeholder => "Password Confirmation" %></br>
-  <%= f.check_box :is_instructor %> I am an instructor</br></br>
-  <%= f.submit "Sign Up", :class => "btn btn-primary btn-block" %>
-<% end %>
-  <%= link_to "Sign Up with Facebook", "/auth/facebook", :class => "btn btn-primary btn-block" %>

@@ -1,17 +1,17 @@
 class Lab
   extend Searchable
-  # now at Lab level we have access to our info search methods
+  # now at Lab class level we have access to our info search methods
+
+  include Commitable
+  # this module allows each Lab instance to get its own commit history
   
-  attr_accessor :name, :tags, :github_url, :readme, :commit_history
+  attr_reader :name, :tags, :github_url, :readme, :commit_history
 
   @@all = []
 
   def initialize(args)
-    @name = args[:name]
-    @tags = args[:tags]
-    @readme = args[:readme]
-    @github_url = args[:github_url]
-    @commit_history = args[:commit_history]
+    @name, @tags, @readme, @github_url = args[:name], args[:tags], args[:readme], args[:github_url]
+    @commit_history = self.get_commits(github_url.match(/\/(.*).git$/)[1])
     @@all << self
   end
 

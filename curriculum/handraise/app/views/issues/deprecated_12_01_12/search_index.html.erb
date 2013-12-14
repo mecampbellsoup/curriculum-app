@@ -1,8 +1,0 @@
-<h2>Search Results</h2>
-<%= form_tag issues_path, method: :get do %>
-  <p>
-    <%= text_field_tag :query, params[:query] %>
-    <%= submit_tag "Search", name: nil, :class => "btn" %>
-  </p>
-<% end %>
-<%= render 'issues_table', :issues => @issues %>

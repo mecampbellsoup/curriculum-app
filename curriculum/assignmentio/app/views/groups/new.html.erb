@@ -1,7 +1,0 @@
-<h4 id = "notice"><%= notice %></h4>
-<%= form_for(@group) do |f| %>
-  <%= render :partial => 'form',:locals => { :f => f }%>
-  <%= render :partial => 'assignments/add_student_form', :locals => { :f => f } %>
-<% end %>
-
-<%= link_to 'back', groups_path %>

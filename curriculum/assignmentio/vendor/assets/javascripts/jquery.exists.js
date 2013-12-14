@@ -1,1 +1,0 @@
-jQuery.fn.exists = function(func){if (this[0]) {if (func){func.apply(this, arguments);} else {return true;}} else {if (func){return this;} else {return false;}};};

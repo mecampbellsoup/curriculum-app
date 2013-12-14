@@ -1,9 +1,0 @@
-yum_sudo() {
-  Exists /usr/bin/sudo && return 0
-  yum -y install sudo
-}
-
-apt_sudo() {
-  Exists /usr/bin/sudo && return 0
-  apt-get -y install sudo
-}

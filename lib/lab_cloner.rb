@@ -22,7 +22,7 @@ class LabCloner
       Dir.chdir(File.join(RootFolder, '/curriculum'))
 
       # name = url.match(/\/([a-zA-Z-]*)(?=-ruby\b-\d{3})/)[1]
-      name = url.match(/\/([a-zA-Z-]*)/)[1]
+      name = url.match(/\/([a-zA-Z\d-]*)/)[1].gsub(/-?ruby-\d{3}-?/, "")
       if !Dir.glob(File.basename(File.join(Dir.pwd,"*"))).include?(name)
         system("git clone #{url} #{name}")
         system("rm -rf #{name}/.git")

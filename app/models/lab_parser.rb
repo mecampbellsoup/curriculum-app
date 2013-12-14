@@ -35,9 +35,5 @@ class LabParser
       :name => File.basename(lab_dir),
       :github_url => url_file.read.strip
     }
-    lab_commits = {
-      :commit_history => GitHubApi.get_commits(lab_attrs[:github_url].match(/\/(.*).git$/)[1])
-    }
-    lab_attrs.merge(lab_commits)
   end
 end
