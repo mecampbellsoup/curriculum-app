@@ -2,7 +2,7 @@ class Lab
   extend Searchable
   # now at Lab class level we have access to our info search methods
 
-  include Commitable
+  include Committable
   # this module allows each Lab instance to get its own commit history
   
   attr_reader :name, :tags, :github_url, :readme, :commit_history
