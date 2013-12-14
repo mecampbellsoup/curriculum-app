@@ -1,6 +1,6 @@
 @application_name = "curriculum-app"
 @application_ip_address = "162.243.244.73"
-@application_repo = "git@github.com:mecampbellsoup/curriculum-app.git"
+@application_repo = "git@github.com:flatiron-school/curriculum-app.git"
 
 require "bundler/capistrano"
 require "rvm/capistrano"

@@ -1,4 +1,4 @@
-module Commitable
+module Committable
 
   def get_commits(user = 'flatiron-school', branch = 'master', repo)
     uri = open("https://api.github.com/repos/#{user}/#{repo}/commits?sha=#{branch}&access_token=#{ENV['GITHUB_OAUTH_TOKEN']}")
