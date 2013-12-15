@@ -6,7 +6,7 @@ cd "curriculum/$2";
 pwd;
 git init;
 git add --all;
-git commit -m "New lab for you nerds!";
+git commit -m "New lab for you guys!";
 git remote add origin $4;
 git config
 git push origin master;

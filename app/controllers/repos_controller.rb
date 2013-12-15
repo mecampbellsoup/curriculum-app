@@ -34,7 +34,7 @@ class ReposController < ApplicationController
     class_id, semester_id = params[:deploy][:class], params[:deploy][:semester]
     new_lab_name = "#{params[:lab]}-#{class_id}-#{semester_id}"
     path = File.join(Dir.pwd, "/lib/create_remote.sh")
-    origin_master_url = "git@github.com:mecampbellsoup/#{new_lab_name}.git"
+    origin_master_url = "git@github.com:flatiron-school/#{new_lab_name}.git"
     local_lab_path = File.join(Dir.pwd, "/curriculum/#{params[:lab]}")
     system("source #{path} '#{ENV['GITHUB_OAUTH_TOKEN']}' '#{new_lab_name}' '#{local_lab_path}' '#{origin_master_url}'")
     # TODO: add error handling for this part...
